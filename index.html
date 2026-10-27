@@ -1,0 +1,3615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>らぁ麺 とうひち - Ramen Touhichi | 京都・修学院</title>
+    <meta name="description" content="京都・修学院のらぁ麺とうひち。地鶏と水、生揚げ醤油でつくる淡麗鶏清湯のらぁ麺。ミシュランガイド・ビブグルマン掲載。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           TOKENS — 赤・茶・黒・白・ベージュ
+        ============================================================ */
+        :root {
+            --paper: #fbf8f3;       /* 白 */
+            --bg: #f5efe6;          /* 生成り */
+            --beige: #ece2d3;       /* ベージュ */
+            --beige-deep: #d9c7ad;
+            --ink: #1d1814;         /* 黒 */
+            --ink-soft: #3a2f27;
+            --brown: #6b4a33;       /* 茶 */
+            --brown-dark: #2b1f17;
+            --red: #8e1b1b;         /* 赤 */
+            --red-deep: #6e1212;
+            --muted: #7a6a5a;
+            --line: rgba(58, 40, 25, 0.16);
+            --gold: var(--red);     /* 旧スタイルとの互換用 */
+            --serif: 'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+            --latin: 'Cormorant Garamond', 'Shippori Mincho', serif;
+            --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0 0.15 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+
+        body {
+            font-family: var(--serif);
+            background: var(--bg) var(--noise);
+            color: var(--ink);
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+        [hidden] { display: none !important; }
+        a { color: inherit; }
+
+        /* 言語切替 */
+        .lang-en { display: none; }
+        body.english-mode .lang-ja { display: none; }
+        body.english-mode .lang-en { display: revert; }
+
+        .sr-only {
+            position: absolute; width: 1px; height: 1px; overflow: hidden;
+            clip: rect(0 0 0 0); white-space: nowrap;
+        }
+
+        /* ============================================================
+           共通パーツ
+        ============================================================ */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 5vw, 56px);
+        }
+
+        .sec { padding: clamp(80px, 10vw, 130px) 0; position: relative; }
+
+        .eyebrow {
+            display: block;
+            font-family: var(--latin);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--brown);
+            margin-bottom: 14px;
+        }
+
+        .sec-title {
+            font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            line-height: 1.55;
+            color: var(--ink);
+        }
+
+        .sec-head-center { text-align: center; margin-bottom: clamp(40px, 6vw, 64px); }
+        .sec-head-center .eyebrow { margin-bottom: 10px; }
+
+        .sec-head-center::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 36px;
+            background: var(--red);
+            margin: 22px auto 0;
+        }
+
+        /* 下線付きテキストリンク */
+        .line-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 0.86rem;
+            letter-spacing: 0.14em;
+            text-decoration: none;
+            color: var(--ink);
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--ink);
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .line-link::after {
+            content: '';
+            width: 36px;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s;
+        }
+        .line-link:hover { color: var(--red); border-color: var(--red); }
+        .line-link:hover::after { width: 52px; }
+
+        /* 赤ボタン */
+        .btn-red {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            background: var(--red);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.86rem;
+            letter-spacing: 0.2em;
+            padding: 14px 30px;
+            border: 1px solid var(--red);
+            transition: background 0.3s, border-color 0.3s;
+            white-space: nowrap;
+        }
+        .btn-red::after {
+            content: '';
+            width: 34px;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s;
+        }
+        .btn-red:hover { background: var(--red-deep); border-color: var(--red-deep); }
+        .btn-red:hover::after { width: 46px; }
+
+        /* 丸矢印 */
+        .arrow-circle {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .arrow-circle svg { width: 14px; height: 14px; }
+
+        /* 落款風の赤印 */
+        .seal {
+            display: inline-grid;
+            grid-template-columns: 1fr 1fr;
+            width: 34px;
+            height: 34px;
+            padding: 3px;
+            background: var(--red);
+            color: #fff;
+            font-size: 0.6rem;
+            line-height: 1;
+            text-align: center;
+            align-items: center;
+            border-radius: 2px;
+            writing-mode: vertical-rl;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .fade-in { opacity: 1; transform: none; transition: none; }
+            *, *::before, *::after { animation: none !important; }
+        }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
+        #header {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 900;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 0 clamp(16px, 3vw, 40px);
+            transition: background 0.4s, box-shadow 0.4s, height 0.4s;
+        }
+
+        #header.scrolled {
+            background: rgba(251, 248, 243, 0.94);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 var(--line);
+            height: 66px;
+        }
+
+        .header-logo img { height: clamp(48px, 5vw, 60px); width: auto; }
+        .header-logo .logo-light { display: none; }
+
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: clamp(14px, 1.8vw, 28px);
+        }
+
+        .pc-nav {
+            display: none;
+            list-style: none;
+            align-items: center;
+            gap: clamp(14px, 1.7vw, 30px);
+            white-space: nowrap;
+        }
+
+        .pc-nav a {
+            position: relative;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            color: var(--ink);
+            padding: 6px 0;
+            transition: color 0.3s;
+        }
+        .pc-nav a::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: var(--red);
+            transition: width 0.3s, left 0.3s;
+        }
+        .pc-nav a:hover { color: var(--red); }
+        .pc-nav a:hover::after { width: 16px; left: calc(50% - 8px); }
+
+        .pc-nav .zukan-link a {
+            border: 1px solid var(--line);
+            padding: 6px 12px;
+        }
+        .pc-nav .zukan-link a::after { display: none; }
+        .pc-nav .zukan-link a:hover { border-color: var(--red); }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            color: var(--ink);
+            font-family: var(--latin);
+            font-size: 0.86rem;
+            letter-spacing: 0.12em;
+            padding: 3px 2px;
+            cursor: pointer;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .lang-btn:hover { color: var(--red); border-color: var(--red); }
+
+        .header-reserve { padding: 11px 22px; font-size: 0.8rem; display: none; }
+        .header-reserve::after { width: 26px; }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            position: relative;
+            z-index: 910;
+        }
+        .hamburger-btn span {
+            display: block;
+            width: 28px;
+            height: 1px;
+            background: var(--ink);
+            transition: transform 0.35s, opacity 0.35s;
+        }
+        .hamburger-btn.open span:nth-child(1) { transform: translateY(8px) rotate(30deg); }
+        .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+        .hamburger-btn.open span:nth-child(3) { transform: translateY(-8px) rotate(-30deg); }
+
+        @media (min-width: 640px) {
+            .header-reserve { display: inline-flex; }
+        }
+
+        @media (min-width: 1140px) {
+            .pc-nav { display: flex; }
+            #header .hamburger-btn,
+            #mobileMenu { display: none; }
+        }
+
+        /* モバイルメニュー */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 800;
+            background: var(--paper) var(--noise);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 96px 36px 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s, visibility 0.4s;
+            overflow-y: auto;
+        }
+        .mobile-menu.open { opacity: 1; visibility: visible; }
+
+        .mobile-menu ul { list-style: none; }
+        .mobile-menu li {
+            border-bottom: 1px solid var(--line);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.45s, transform 0.45s;
+        }
+        .mobile-menu.open li { opacity: 1; transform: none; }
+        .mobile-menu li:nth-child(1) { transition-delay: 0.05s; }
+        .mobile-menu li:nth-child(2) { transition-delay: 0.09s; }
+        .mobile-menu li:nth-child(3) { transition-delay: 0.13s; }
+        .mobile-menu li:nth-child(4) { transition-delay: 0.17s; }
+        .mobile-menu li:nth-child(5) { transition-delay: 0.21s; }
+        .mobile-menu li:nth-child(6) { transition-delay: 0.25s; }
+        .mobile-menu li:nth-child(7) { transition-delay: 0.29s; }
+        .mobile-menu li:nth-child(8) { transition-delay: 0.33s; }
+
+        .mobile-menu li a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+        }
+        .mobile-menu li a .arrow { color: var(--red); font-size: 0.9rem; }
+
+        .mobile-menu .btn-red { margin-top: 32px; width: 100%; }
+        .mobile-lang-wrap { margin-top: 22px; text-align: center; }
+
+        /* ============================================================
+           HERO（写真背景）
+           重なり順: 背景写真 → 左側のぼかし → TOUHICHI → どんぶりの切り抜き → テキスト
+           写真は右下に配置し、上と左の端を背景色になじませる
+        ============================================================ */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            padding: 110px clamp(20px, 6vw, 88px) 90px;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 60% 50% at 20% 20%, rgba(255, 250, 242, 0.7) 0%, transparent 70%),
+                #f1e0ca;
+            color: var(--ink);
+        }
+
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        /* 写真の枠（16:9）。z-index を付けないので中の要素と TOUHICHI が同じ重なり順で並ぶ */
+        .hero-photo {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 90%;
+            aspect-ratio: 1672 / 941;
+        }
+        .hero-bg,
+        .hero-bowl-cut {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            will-change: transform;
+        }
+        .hero-bg {
+            z-index: 0;
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%), linear-gradient(to right, transparent 0%, #000 22%);
+            -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 24%), linear-gradient(to right, transparent 0%, #000 22%);
+            mask-composite: intersect;
+        }
+        .hero-shade {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(90deg, rgba(241, 224, 202, 0.85) 0%, rgba(241, 224, 202, 0.5) 30%, rgba(241, 224, 202, 0) 46%);
+        }
+        .hero-word {
+            position: absolute;
+            left: 50%;
+            top: 13%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-family: var(--latin);
+            font-weight: 500;
+            font-size: clamp(5.5rem, 18.5vw, 19rem);
+            line-height: 1;
+            letter-spacing: 0.02em;
+            color: rgba(107, 74, 51, 0.2);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+        }
+        .hero-bowl-cut { z-index: 3; }
+
+        .hero-text {
+            position: relative;
+            z-index: 4;
+            max-width: 640px;
+            margin-top: 24vh;
+            text-shadow: 0 0 18px rgba(248, 240, 228, 0.9);
+        }
+
+        .hero-title {
+            font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+            font-weight: 500;
+            line-height: 1.55;
+            letter-spacing: 0.12em;
+            margin-bottom: 26px;
+        }
+        .hero-title em { font-style: normal; color: var(--red); }
+
+        .hero-sub {
+            font-size: clamp(0.84rem, 1.1vw, 0.95rem);
+            letter-spacing: 0.12em;
+            line-height: 2.2;
+            color: var(--ink-soft);
+            margin-bottom: 30px;
+        }
+
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 18px;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            color: var(--brown);
+            margin-bottom: 40px;
+        }
+        .hero-chips li { list-style: none; display: inline-flex; align-items: center; gap: 8px; }
+        .hero-chips li + li::before {
+            content: '';
+            width: 1px;
+            height: 12px;
+            background: var(--beige-deep);
+            margin-right: 10px;
+        }
+        .hero-chips svg { width: 15px; height: 15px; color: var(--red); }
+
+        .hero-scroll {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        .hero-scroll-circle {
+            width: 68px;
+            height: 68px;
+            border: 1px solid var(--ink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, color 0.3s;
+        }
+        .hero-scroll-circle svg { width: 16px; height: 22px; animation: bob 2.2s ease-in-out infinite; }
+        .hero-scroll span { font-family: var(--latin); font-size: 0.66rem; letter-spacing: 0.3em; }
+        .hero-scroll:hover .hero-scroll-circle { background: var(--ink); color: var(--paper); }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(-3px); }
+            50% { transform: translateY(4px); }
+        }
+
+        .hero-side {
+            position: absolute;
+            right: clamp(14px, 2.4vw, 34px);
+            bottom: 70px;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+        .hero-side-text {
+            writing-mode: vertical-rl;
+            font-family: var(--latin);
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            color: var(--brown);
+        }
+
+        @media (max-width: 1279px) {
+            .hero-side { display: none; }
+        }
+
+        /* スマホ専用のどんぶり（PCでは非表示） */
+        .hero-bowl-sp { display: none; }
+
+        .hero-brand-en { display: none; }
+
+        /* スマホ：大きな見出し → RAMEN TOUHICHI → 画面いっぱいのどんぶり（下端まで） */
+        @media (max-width: 899px) {
+            .hero {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                min-height: 100svh;
+                padding: 96px 0 7vh;
+            }
+            .hero-media { inset: 0; }
+            .hero-photo {
+                inset: 0;
+                height: auto;
+                aspect-ratio: auto;
+                transform: scaleX(-1);   /* 木漏れ日を右上に */
+            }
+            .hero-bg { object-fit: cover; object-position: 12% 50%; -webkit-mask-image: none; mask-image: none; }
+            .hero-bowl-cut, .hero-word, .hero-side { display: none; }
+            .hero-shade {
+                display: block;
+                /* 上は文字が読みやすいよう淡く、下は次のセクションの色へなめらかにつなぐ */
+                background: linear-gradient(180deg,
+                    rgba(241, 224, 202, 0.72) 0%,
+                    rgba(241, 224, 202, 0.35) 40%,
+                    rgba(245, 236, 224, 0.55) 72%,
+                    var(--paper) 100%);
+            }
+            .hero-text {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                min-width: 0;
+                max-width: none;
+                margin: 0;
+                padding: 0 28px;
+                text-shadow: none;
+            }
+            .hero-title {
+                font-size: clamp(1.9rem, 8.6vw, 2.8rem);
+                font-weight: 500;
+                line-height: 1.4;
+                letter-spacing: 0.08em;
+                white-space: nowrap;
+                margin: 4vh 0 14px;
+            }
+            .hero-brand-en {
+                display: block;
+                font-family: var(--latin);
+                font-size: 0.8rem;
+                font-weight: 500;
+                letter-spacing: 0.34em;
+                color: var(--brown);
+            }
+            .hero-chips { display: none; }
+            .hero-sub {
+                order: 3;
+                font-size: 0.86rem;
+                line-height: 2;
+                letter-spacing: 0.1em;
+                margin: 14px 0 0;
+                color: var(--ink-soft);
+            }
+            .hero-bowl-sp {
+                display: block;
+                position: relative;
+                z-index: 1;
+                order: 5;
+                align-self: flex-end;
+                /* 縦長の画面ほどどんぶりを大きく */
+                width: clamp(104vw, calc((100svh - 380px) * 1.15), 118vw);
+                height: auto;
+                max-width: none;
+                margin: auto calc(-28px - 6vw) 0 0;   /* 右端（写真の切れ目）は画面の外へ */
+                padding-top: 22px;
+                filter: drop-shadow(0 22px 26px rgba(90, 55, 25, 0.3));
+                -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+                mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+            }
+            /* 左下の SCROLL（縦線・文字・丸矢印） */
+            .hero-scroll {
+                position: absolute;
+                left: 22px;
+                bottom: 26px;
+                z-index: 5;
+                gap: 8px;
+                color: var(--brown);
+            }
+            .hero-scroll::before {
+                content: '';
+                width: 1px;
+                height: 34px;
+                background: currentColor;
+                opacity: 0.8;
+            }
+            .hero-scroll span { order: 1; font-size: 0.6rem; }
+            .hero-scroll .hero-scroll-circle {
+                order: 2;
+                width: 36px;
+                height: 36px;
+                border-color: currentColor;
+            }
+            .hero-scroll-circle svg { width: 12px; height: 16px; }
+        }
+
+        /* スマホのヘッダー：「ご予約」は押しやすい小さめの赤ボタンに（タップ範囲 44px 以上） */
+        @media (max-width: 639px) {
+            .header-reserve {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 44px;
+                min-width: 72px;
+                padding: 0 16px;
+                font-size: 0.86rem;
+                letter-spacing: 0.14em;
+                border-radius: 2px;
+            }
+            .header-reserve::after { display: none; }
+            .header-right { gap: 8px; }
+        }
+
+        
+        /* ヒーローの下の「ご来店の前に」クイックリンク */
+        .quick-band {
+            background: var(--paper) var(--noise);
+            padding: clamp(36px, 5vw, 56px) 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .quick-links {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: center;
+            gap: clamp(20px, 4vw, 56px);
+        }
+        .quick-links-head {
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            line-height: 1.6;
+            color: var(--ink);
+        }
+        .quick-links-head::before {
+            content: 'Before your visit';
+            display: block;
+            font-family: var(--latin);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+        body.english-mode .quick-links-head::before { content: 'Guide'; }
+        .quick-links ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 100%;
+            padding: 18px 18px;
+            background: #fff;
+            border: 1px solid var(--line);
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .quick-link::after {
+            content: '';
+            margin-left: auto;
+            width: 7px;
+            height: 7px;
+            border-right: 1.4px solid var(--red);
+            border-bottom: 1.4px solid var(--red);
+            transform: rotate(45deg) translate(-2px, -2px);
+            flex-shrink: 0;
+        }
+        .quick-link:hover { border-color: var(--red); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(90, 55, 25, 0.08); }
+        .quick-link-icon { color: var(--red); display: flex; flex-shrink: 0; }
+        .quick-link-icon svg { width: 24px; height: 24px; }
+        .quick-link-label { font-size: 0.86rem; font-weight: 600; letter-spacing: 0.06em; line-height: 1.4; white-space: nowrap; }
+
+        @media (max-width: 1099px) {
+            .quick-links { grid-template-columns: 1fr; }
+            .quick-links-head { text-align: center; }
+        }
+        @media (max-width: 799px) {
+            .quick-links ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+            .quick-link { padding: 14px 10px; gap: 8px; min-height: 56px; }
+            .quick-link::after { display: none; }
+            .quick-link-icon svg { width: 20px; height: 20px; }
+            /* 幅が足りない時は折り返す（英語表示や狭い端末でもはみ出さない） */
+            .quick-link-label { font-size: 0.84rem; letter-spacing: 0.02em; white-space: normal; word-break: keep-all; overflow-wrap: break-word; line-height: 1.35; }
+        }
+        #parking { scroll-margin-top: 140px; }
+
+/* スマホでは本文を少し大きくして読みやすく */
+        @media (max-width: 599px) {
+            .menu-desc-text,
+            .menu-card-desc,
+            .guide-step-text,
+            .guide-card p:not(.guide-card-label),
+            .faq-a,
+            .access-val,
+            .parking-notice-text,
+            .owner-body p.owner-text,
+            .concept-body,
+            .craft-text,
+            .menu-modal-desc,
+            .menu-modal-toppings li { font-size: 0.92rem; line-height: 2; }
+            .ingredients-body { font-size: 0.84rem; }
+            .menu-full-row { font-size: 0.95rem; }
+        }
+
+        /* ============================================================
+           CONCEPT（素材へのこだわり）
+        ============================================================ */
+        .concept-sec { background: var(--paper) var(--noise); }
+
+        /* 素材ビジュアル */
+        .ingredients-hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: clamp(620px, 73.3vw, 920px);
+            background: #efdfc9 url("concept-bg-pc.webp") right center / cover no-repeat;
+            overflow: hidden;
+        }
+        /* 上下を前後のセクションの色になじませる */
+        .ingredients-hero::before,
+        .ingredients-hero::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 90px;
+            pointer-events: none;
+        }
+        /* 上は直前の「お品書き」の背景色（ベージュ）からなめらかにつなぐ */
+        .ingredients-hero::before {
+            top: 0;
+            height: 180px;
+            background: linear-gradient(to bottom,
+                var(--beige) 0%,
+                rgba(236, 226, 211, 0.75) 30%,
+                rgba(236, 226, 211, 0.3) 65%,
+                rgba(236, 226, 211, 0) 100%);
+        }
+        .ingredients-hero::after { bottom: 0; background: linear-gradient(to top, var(--paper), rgba(251, 248, 243, 0)); }
+        .ingredients-inner { position: relative; z-index: 1; width: 100%; }
+        .ingredients-text {
+            max-width: 480px;
+            text-shadow: 0 0 16px rgba(239, 223, 201, 0.9);
+        }
+        .ingredients-eyebrow {
+            font-family: var(--latin);
+            font-size: 0.86rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            line-height: 1.7;
+            text-transform: uppercase;
+            color: #9b5a45;
+            margin-bottom: 22px;
+        }
+        .ingredients-title {
+            font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+            font-weight: 500;
+            line-height: 1.55;
+            letter-spacing: 0.12em;
+            margin-bottom: 30px;
+        }
+        .ingredients-lead {
+            font-size: 0.95rem;
+            line-height: 2.2;
+            letter-spacing: 0.1em;
+            color: var(--ink-soft);
+        }
+        .circle-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            text-decoration: none;
+            font-size: 0.86rem;
+            letter-spacing: 0.16em;
+            color: var(--ink);
+        }
+        .circle-link::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s;
+        }
+        .circle-link .arrow-circle { width: 54px; height: 54px; color: #9b5a45; }
+        .circle-link:hover .arrow-circle { background: var(--red); border-color: var(--red); color: #fff; }
+        .circle-link:hover::after { width: 56px; }
+
+        @media (max-width: 899px) {
+            .ingredients-hero {
+                align-items: flex-start;
+                min-height: calc(100vw * 883 / 436);
+                padding-top: 14vw;
+                background: #eddbc2 url("concept-bg-sp.webp") center top / 100% auto no-repeat;
+            }
+            .ingredients-hero::before { height: 90px; }
+            .ingredients-text { max-width: 74%; }
+            .ingredients-eyebrow { font-size: 0.74rem; margin-bottom: 14px; }
+            .ingredients-title { font-size: clamp(2rem, 10vw, 2.8rem); letter-spacing: 0.08em; margin-bottom: 22px; }
+            .ingredients-lead { font-size: 0.82rem; line-height: 2.1; margin-bottom: 30px; }
+            .circle-link { font-size: 0.78rem; gap: 14px; }
+            .circle-link .arrow-circle { width: 46px; height: 46px; }
+        }
+
+        /* 素材ビジュアルの下に続く説明（同じセクション内） */
+        .concept-detail { background: var(--paper) var(--noise); padding: 20px 0 clamp(80px, 10vw, 120px); }
+        /* PC：説明文は素材ビジュアルの中に。下は4つの素材だけを横一列に */
+        .ingredients-text { max-width: 520px; }
+        .ingredients-lead { margin-bottom: 0; }
+        .ingredients-rule { display: block; width: 40px; height: 1px; background: #9b5a45; margin: 30px 0 26px; }
+        .ingredients-body {
+            font-size: 0.86rem;
+            line-height: 2.15;
+            letter-spacing: 0.06em;
+            color: var(--ink-soft);
+            margin-bottom: 28px;
+        }
+        @media (min-width: 900px) {
+            .concept-intro.sp-only { display: none; }
+            .concept-detail .concept-grid { grid-template-columns: 1fr; }
+            .concept-detail .craft-list { max-width: 980px; margin: 0 auto; width: 100%; }
+        }
+        /* スマホ：説明文も素材ビジュアルの中へ（素材の写真の上に淡いカードで重ねる） */
+        @media (max-width: 899px) {
+            .concept-intro.sp-only { display: none; }
+            .ingredients-hero { min-height: calc(100vw * 883 / 436); padding-bottom: 30vw; }
+            .ingredients-text { max-width: none; }
+            .ingredients-lead { max-width: 74%; }
+            .ingredients-more {
+                width: 62%;             /* 左側に寄せて、右の素材写真を見せる */
+                margin-top: 26px;
+                margin-left: -8px;
+                padding: 18px 14px 16px;
+                background: rgba(251, 248, 243, 0.82);
+                -webkit-backdrop-filter: blur(6px);
+                backdrop-filter: blur(6px);
+                box-shadow: 0 10px 30px rgba(90, 55, 25, 0.1);
+                text-shadow: none;
+            }
+            .ingredients-rule { margin: 0 0 14px; }
+            .ingredients-body { font-size: 0.76rem; line-height: 1.95; letter-spacing: 0.03em; margin-bottom: 14px; }
+            .ingredients-more .line-link { font-size: 0.78rem; gap: 10px; }
+            .ingredients-more .line-link::after { width: 24px; }
+            .concept-detail { padding-top: 16px; }
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+            gap: clamp(40px, 6vw, 80px);
+            align-items: center;
+        }
+
+        .concept-intro .sec-title { margin-bottom: 26px; }
+
+        .concept-body {
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            line-height: 2.2;
+            color: var(--ink-soft);
+            margin-bottom: 34px;
+        }
+
+        .craft-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .craft-item {
+            text-align: center;
+            padding: 8px clamp(10px, 1.4vw, 22px) 12px;
+        }
+        .craft-item + .craft-item { border-left: 1px solid var(--line); }
+
+        .craft-img {
+            width: min(100%, 150px);
+            aspect-ratio: 1;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 16px 30px rgba(60, 35, 15, 0.18);
+        }
+        .craft-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .craft-item:hover .craft-img img { transform: scale(1.07); }
+
+        .craft-name {
+            font-size: 1.08rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            margin-bottom: 4px;
+        }
+        .craft-en {
+            display: block;
+            font-family: var(--latin);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        .craft-text {
+            font-size: 0.78rem;
+            line-height: 1.95;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+        }
+
+        @media (max-width: 899px) {
+            .concept-grid { grid-template-columns: 1fr; }
+            .craft-list { grid-template-columns: repeat(2, 1fr); row-gap: 34px; }
+            .craft-item:nth-child(3) { border-left: none; }
+        }
+
+        /* ============================================================
+           MENU（お品書き）
+        ============================================================ */
+        .menu-sec {
+            background:
+                radial-gradient(ellipse 40% 60% at 0% 30%, rgba(107, 74, 51, 0.1) 0%, transparent 70%),
+                var(--beige) var(--noise);
+        }
+
+        .menu-top {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 240px;
+            gap: clamp(24px, 3vw, 40px);
+            align-items: stretch;
+        }
+
+        /* 見出しは他のセクションと同じく上部中央に */
+        .menu-intro {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: clamp(8px, 2vw, 24px);
+        }
+        .menu-intro .eyebrow { margin-bottom: 10px; }
+        .menu-intro .sec-title { margin-bottom: 18px; }
+        .menu-intro .sec-title::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 36px;
+            background: var(--red);
+            margin: 22px auto 0;
+        }
+        .menu-intro p {
+            font-size: 0.86rem;
+            letter-spacing: 0.08em;
+            line-height: 2.1;
+            color: var(--ink-soft);
+            margin-bottom: 30px;
+        }
+
+        .menu-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 36px clamp(14px, 1.8vw, 28px);
+        }
+
+        /* 一押し：特製 鶏醤油らぁ麺を大きく */
+        .menu-card.is-featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+            grid-template-areas: "photo label" "photo foot";
+            grid-template-rows: auto 1fr;
+            column-gap: clamp(20px, 3vw, 44px);
+            align-items: start;
+            padding-bottom: 36px;
+            border-bottom: 1px solid var(--line);
+        }
+        .is-featured .menu-card-photo {
+            grid-area: photo;
+            align-self: center;
+            aspect-ratio: auto;
+            margin: 0;
+        }
+        .is-featured .menu-card-photo::before {
+            content: '';
+            position: absolute;
+            inset: 8% 6%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 250, 242, 0.95) 0%, rgba(255, 250, 242, 0) 70%);
+        }
+        .is-featured .menu-card-photo img {
+            position: relative;
+            width: 122%;
+            margin-left: -6%;
+            filter: drop-shadow(0 26px 28px rgba(60, 35, 15, 0.32));
+        }
+        .is-featured .menu-card-label {
+            grid-area: label;
+            align-self: end;
+            justify-self: start;
+            background: var(--red);
+            color: #fff;
+            font-size: 0.74rem;
+            letter-spacing: 0.2em;
+            padding: 3px 14px;
+            margin: 20px 0 16px;
+        }
+        .is-featured .menu-card-foot { grid-area: foot; }
+        .is-featured .menu-card-name {
+            font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .menu-card-desc {
+            display: block;
+            font-size: 0.82rem;
+            line-height: 2;
+            letter-spacing: 0.05em;
+            color: var(--ink-soft);
+            margin-bottom: 20px;
+        }
+        .is-featured .menu-card-row { padding-top: 14px; }
+        .is-featured .menu-card-price {
+            font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+            color: var(--red);
+        }
+        .is-featured .arrow-circle { width: 48px; height: 48px; }
+
+        .menu-card {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            text-align: left;
+            background: none;
+            border: none;
+            font-family: inherit;
+            color: inherit;
+        }
+
+        .menu-card-photo {
+            position: relative;
+            aspect-ratio: 3 / 2.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .menu-card-photo img {
+            width: 118%;
+            max-width: none;
+            filter: drop-shadow(0 16px 18px rgba(60, 35, 15, 0.28));
+            transition: transform 0.6s ease;
+        }
+        .menu-card:hover .menu-card-photo img { transform: scale(1.06); }   /* カーソルを合わせると少し大きく */
+
+        .menu-card-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            color: var(--red);
+            margin-bottom: 4px;
+        }
+
+        .menu-card-foot {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .menu-card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 8px;
+            border-top: 1px solid var(--line);
+        }
+
+        .menu-card-name {
+            font-size: 0.94rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .menu-card-price {
+            display: block;
+            font-family: var(--latin);
+            font-size: 1.05rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+        }
+        .menu-card-tag {
+            display: inline-block;
+            font-size: 0.64rem;
+            letter-spacing: 0.08em;
+            color: var(--brown);
+            border: 1px solid var(--beige-deep);
+            padding: 0 6px;
+            margin-left: 6px;
+            vertical-align: 2px;
+            font-family: var(--serif);
+        }
+        .menu-card .arrow-circle { color: var(--ink); }
+        .menu-card:hover .arrow-circle { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+        /* 季節の一杯（赤パネル） */
+        .seasonal {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px 26px;
+            min-height: 300px;
+            background:
+                radial-gradient(ellipse at 20% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 60%),
+                linear-gradient(160deg, var(--red) 0%, var(--red-deep) 100%);
+            color: #fff;
+            text-decoration: none;
+        }
+        .seasonal-title { font-size: 1.3rem; letter-spacing: 0.18em; font-weight: 500; }
+        .seasonal .eyebrow { color: rgba(255, 255, 255, 0.7); margin: 4px 0 16px; font-size: 0.66rem; }
+        .seasonal p {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 1px 8px rgba(110, 18, 18, 0.9);
+            font-size: 0.8rem;
+            line-height: 2;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.86);
+            max-width: 13em;
+        }
+        .seasonal-img {
+            position: absolute;
+            right: -56px;
+            bottom: -56px;
+            width: 170px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.12), -10px 10px 30px rgba(0, 0, 0, 0.35);
+            transition: transform 0.8s ease;
+        }
+        .seasonal:hover .seasonal-img { transform: scale(1.06); }
+        .seasonal .arrow-circle { position: relative; z-index: 2; margin-top: auto; color: #fff; }
+        .seasonal:hover .arrow-circle { background: #fff; color: var(--red); border-color: #fff; }
+
+        @media (max-width: 1139px) {
+            .menu-top { grid-template-columns: 1fr; }
+            .seasonal { min-height: 190px; }
+            .seasonal p { max-width: 60%; }
+        }
+
+        @media (max-width: 699px) {
+            .menu-intro p { margin-bottom: 24px; }
+            .menu-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 30px; }
+            .menu-card.is-featured {
+                grid-template-columns: 1fr;
+                grid-template-areas: "photo" "label" "foot";
+                padding-bottom: 28px;
+            }
+            .is-featured .menu-card-photo img { width: 108%; margin-left: -4%; }
+            .is-featured .menu-card-label { margin: 18px 0 10px; }
+            .menu-card-name { font-size: 0.9rem; }
+            .seasonal p { max-width: 58%; }
+            .seasonal-img { width: 170px; right: -40px; bottom: -40px; }
+        }
+
+        .menu-note-tax {
+            font-size: 0.74rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            text-align: right;
+            margin-top: 28px;
+        }
+
+        /* 全メニュー */
+        .menu-more-btn,
+        .menu-close-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 44px auto 0;
+            background: transparent;
+            border: 1px solid var(--ink);
+            color: var(--ink);
+            font-family: var(--serif);
+            font-size: 0.88rem;
+            letter-spacing: 0.2em;
+            padding: 15px 56px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+        .menu-more-btn:hover,
+        .menu-close-btn:hover { background: var(--ink); color: var(--paper); }
+
+        #menuFull {
+            max-width: 860px;
+            margin: 48px auto 0;
+            background: var(--paper) var(--noise);
+            padding: clamp(28px, 5vw, 56px);
+            box-shadow: 0 20px 50px rgba(60, 35, 15, 0.08);
+        }
+
+        .menu-category-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.02rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            margin: 40px 0 10px;
+        }
+        .menu-category-head:first-child { margin-top: 0; }
+        .menu-category-head::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--red);
+            transform: rotate(45deg);
+        }
+
+        .menu-list { list-style: none; border-top: 1px solid var(--line); }
+        .menu-list-item { border-bottom: 1px solid var(--line); }
+
+        .menu-full-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 4px;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+        }
+        /* 詳細を開く行は button（キーボード・読み上げ対応）。見た目はリセット */
+        button.menu-full-row {
+            width: 100%;
+            border: none;
+            background: none;
+            font-family: inherit;
+            color: inherit;
+            text-align: left;
+            line-height: inherit;
+        }
+        button.menu-full-row:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+        .has-desc .menu-full-row { cursor: pointer; }
+        .has-desc .menu-full-row:hover .menu-full-name { color: var(--red); }
+
+        .menu-full-name { flex: 1; transition: color 0.3s; }
+        .menu-full-price {
+            font-family: var(--latin);
+            font-size: 1.02rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        .menu-desc-chevron {
+            display: inline-flex;
+            color: var(--muted);
+            transition: transform 0.3s;
+        }
+        .menu-list-item.open .menu-desc-chevron { transform: rotate(180deg); color: var(--red); }
+
+        .menu-tag {
+            display: inline-block;
+            font-size: 0.66rem;
+            letter-spacing: 0.08em;
+            color: var(--red);
+            border: 1px solid rgba(142, 27, 27, 0.35);
+            padding: 0 6px;
+            margin-left: 6px;
+            vertical-align: 2px;
+            line-height: 1.7;
+        }
+
+        .menu-desc-body {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s ease;
+        }
+        .menu-list-item.open .menu-desc-body { grid-template-rows: 1fr; }
+        .menu-desc-inner {
+            overflow: hidden;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .menu-list-item.open .menu-desc-inner { padding: 4px 4px 18px; }
+        .menu-desc-photo {
+            flex-shrink: 0;
+            width: 132px;
+            background: var(--beige);
+            cursor: zoom-in;
+        }
+        .menu-desc-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: contain; }
+        .menu-desc-photo { position: relative; }
+        .menu-desc-photo.has-anatomy::after {
+            content: '具材を見る';
+            position: absolute;
+            right: 6px;
+            bottom: 6px;
+            background: var(--red);
+            color: #fff;
+            font-size: 0.64rem;
+            letter-spacing: 0.1em;
+            padding: 2px 8px;
+        }
+        body.english-mode .menu-desc-photo.has-anatomy::after { content: 'Toppings'; }
+        .menu-desc-photo.has-anatomy { cursor: pointer; }
+        .menu-desc-text {
+            font-size: 0.8rem;
+            line-height: 2;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+        }
+
+        @media (max-width: 540px) {
+            .menu-desc-inner { flex-direction: column; align-items: stretch; }
+            .menu-desc-photo { width: 100%; }
+        }
+
+        /* ============================================================
+           初めての方へ（来店ガイド）
+        ============================================================ */
+        .guide-sec { background: var(--bg); }
+
+        .guide-steps {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(16px, 2vw, 28px);
+            position: relative;
+        }
+        /* ステップをつなぐ点線 */
+        .guide-steps::before {
+            content: '';
+            position: absolute;
+            top: 76px;
+            left: 12%;
+            right: 12%;
+            height: 1px;
+            background: repeating-linear-gradient(90deg, var(--beige-deep) 0 6px, transparent 6px 12px);
+        }
+        .guide-step { position: relative; text-align: center; padding: 0 6px; }
+        .guide-step-num {
+            display: block;
+            font-family: var(--latin);
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        .guide-step-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 84px;
+            height: 84px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1.5px solid rgba(142, 27, 27, 0.45);
+            box-shadow: 0 6px 16px rgba(142, 27, 27, 0.08);
+            color: var(--red);
+        }
+        .guide-step-icon svg { width: 42px; height: 42px; }
+        .guide-step-icon svg * { stroke-width: 1.8; }
+        .guide-step-title { font-size: 1.02rem; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 10px; }
+        .guide-step-text {
+            font-size: 0.82rem;
+            line-height: 2;
+            letter-spacing: 0.04em;
+            color: var(--ink-soft);
+            text-align: left;
+        }
+        .guide-step-text strong, .guide-card strong { color: var(--red); font-weight: 600; }
+
+        .guide-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            max-width: 860px;
+            margin: 48px auto 56px;
+            padding: 18px 22px;
+            background: var(--paper);
+            border-left: 3px solid var(--red);
+            font-size: 0.88rem;
+            line-height: 1.9;
+            letter-spacing: 0.05em;
+        }
+        .guide-note-mark {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            font-family: var(--latin);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3px;
+        }
+
+        .guide-info { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+        .guide-card { display: flex; flex-direction: column; background: var(--paper); padding: 26px 24px; }
+        .guide-card-label {
+            font-family: var(--latin);
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 6px;
+        }
+        .guide-card h3 { font-size: 1.05rem; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 10px; }
+        .guide-card p:not(.guide-card-label) { font-size: 0.82rem; line-height: 1.95; letter-spacing: 0.04em; color: var(--ink-soft); }
+        .guide-card-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 18px;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            color: var(--ink);
+        }
+        .guide-card-link .arrow-circle { width: 32px; height: 32px; }
+        .guide-card-link:hover { color: var(--red); }
+        .guide-card-link:hover .arrow-circle { background: var(--red); border-color: var(--red); color: #fff; }
+
+        @media (max-width: 1099px) {
+            .guide-info { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        /* スマホ：縦のタイムライン */
+        @media (max-width: 799px) {
+            .guide-steps { grid-template-columns: 1fr; gap: 0; }
+            .guide-steps::before {
+                top: 20px;
+                bottom: 40px;
+                left: 42px;
+                right: auto;
+                width: 1px;
+                height: auto;
+                background: repeating-linear-gradient(180deg, var(--beige-deep) 0 6px, transparent 6px 12px);
+            }
+            .guide-step {
+                display: grid;
+                grid-template-columns: 84px 1fr;
+                grid-template-areas: "icon num" "icon title" "icon text";
+                column-gap: 18px;
+                text-align: left;
+                padding: 0 0 26px;
+            }
+            .guide-step-icon { grid-area: icon; margin: 0; align-self: start; }
+            .guide-step-num { grid-area: num; margin: 6px 0 2px; font-size: 0.92rem; }
+            .guide-step-title { grid-area: title; margin-bottom: 6px; }
+            .guide-step-text { grid-area: text; }
+            .guide-note { margin: 20px 0 36px; }
+            .guide-info { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================================
+           OWNER（店主紹介）
+        ============================================================ */
+        .owner-sec {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            background: var(--paper) var(--noise);
+            overflow: hidden;
+        }
+
+        .owner-photo {
+            position: relative;
+            min-height: 560px;
+            overflow: hidden;
+            background: var(--brown-dark);
+        }
+        .owner-photo img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.25) saturate(0.9) brightness(0.8);
+        }
+        .owner-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(43, 31, 23, 0.75) 0%, rgba(43, 31, 23, 0.2) 45%, rgba(43, 31, 23, 0) 100%);
+        }
+        .owner-vertical {
+            position: absolute;
+            z-index: 2;
+            top: 56px;
+            left: clamp(28px, 5vw, 64px);
+            writing-mode: vertical-rl;
+            color: #fff;
+            font-size: clamp(1.4rem, 2.4vw, 2rem);
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            line-height: 2;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+        }
+        body.english-mode .owner-vertical { writing-mode: horizontal-tb; letter-spacing: 0.08em; line-height: 1.5; max-width: 60%; }
+
+        .owner-body {
+            position: relative;
+            padding: clamp(64px, 8vw, 110px) clamp(24px, 6vw, 90px);
+            align-self: center;
+        }
+        .owner-branch {
+            position: absolute;
+            top: -30px;
+            right: -50px;
+            width: 300px;
+            color: rgba(107, 74, 51, 0.3);
+            --blossom: rgba(142, 27, 27, 0.7);
+            transform: scaleX(-1) rotate(8deg);
+            pointer-events: none;
+        }
+        .owner-body .sec-title { margin-bottom: 28px; }
+        .owner-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.24em;
+            margin-bottom: 2px;
+        }
+        .owner-role {
+            font-family: var(--latin);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: var(--red);
+            margin-bottom: 24px;
+        }
+        .owner-body p.owner-text {
+            font-size: 0.88rem;
+            line-height: 2.2;
+            letter-spacing: 0.05em;
+            color: var(--ink-soft);
+            margin-bottom: 14px;
+            max-width: 32em;
+        }
+
+        @media (max-width: 899px) {
+            .owner-sec { grid-template-columns: 1fr; }
+            .owner-photo { min-height: 380px; }
+        }
+
+        /* ============================================================
+           NEWS（お知らせ）
+        ============================================================ */
+        .news-sec { background: var(--bg); }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+            gap: clamp(28px, 5vw, 64px);
+            align-items: start;
+        }
+        .news-insta-head {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+        .news-insta .insta-embed { justify-content: flex-start; }
+        @media (max-width: 899px) {
+            .news-grid { grid-template-columns: 1fr; }
+            .news-insta .insta-embed { justify-content: center; }
+        }
+        .news-list {
+            list-style: none;
+            max-width: 860px;
+            margin: 0 auto;
+            border-top: 1px solid var(--line);
+        }
+        .news-item { border-bottom: 1px solid var(--line); }
+        .news-item a {
+            display: grid;
+            grid-template-columns: 130px 1fr auto;
+            align-items: center;
+            gap: 20px;
+            padding: 22px 6px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .news-item a:hover { background: rgba(255, 255, 255, 0.55); }
+        .news-date {
+            font-family: var(--latin);
+            font-size: 0.92rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            color: var(--red);
+        }
+        .news-text { font-size: 0.9rem; letter-spacing: 0.06em; line-height: 1.8; }
+        .news-item .arrow-circle { width: 32px; height: 32px; color: var(--ink); }
+        .news-item a:hover .arrow-circle { background: var(--ink); color: var(--paper); }
+
+        @media (max-width: 599px) {
+            .news-item a { grid-template-columns: 1fr auto; gap: 4px 14px; }
+            .news-date { grid-column: 1; }
+            .news-text { grid-column: 1; }
+            .news-item .arrow-circle { grid-row: 1 / span 2; grid-column: 2; }
+        }
+
+        /* ============================================================
+           FAQ
+        ============================================================ */
+        .faq-sec { background: var(--paper) var(--noise); }
+
+        .faq-list { max-width: 860px; margin: 0 auto; }
+        .faq-item {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .faq-item:first-child { border-top: 1px solid var(--line); }
+        .faq-q, .faq-a {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            align-items: baseline;
+            letter-spacing: 0.06em;
+        }
+        .faq-q { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+        .faq-a { font-size: 0.88rem; line-height: 2; color: var(--ink-soft); }
+        .q-mark, .a-mark {
+            font-family: var(--latin);
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+        .q-mark { color: var(--red); }
+        .a-mark { color: var(--beige-deep); }
+        .faq-a strong { color: var(--red); font-weight: 600; }
+        .faq-a a { color: var(--red); }
+
+        /* ============================================================
+           ACCESS（店舗案内）
+        ============================================================ */
+        .access-sec { background: var(--beige) var(--noise); }
+
+        .access-photo-wrap {
+            position: relative;
+            margin-bottom: clamp(40px, 6vw, 64px);
+        }
+        .access-photo {
+            width: 100%;
+            aspect-ratio: 16 / 7;
+            object-fit: cover;
+            filter: sepia(0.12);
+        }
+        .access-lead {
+            position: absolute;
+            right: clamp(14px, 3vw, 36px);
+            bottom: -28px;
+            background: var(--paper);
+            padding: 24px 32px;
+            font-size: clamp(0.92rem, 1.4vw, 1.08rem);
+            line-height: 2;
+            letter-spacing: 0.12em;
+            box-shadow: 0 14px 34px rgba(60, 35, 15, 0.12);
+        }
+        .access-lead::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 24px; bottom: 24px;
+            width: 2px;
+            background: var(--red);
+        }
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+            gap: clamp(32px, 5vw, 64px);
+            margin-top: 70px;
+        }
+
+        .access-info-list { list-style: none; border-top: 1px solid var(--line); margin-bottom: 36px; }
+        .access-info-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 16px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .access-label {
+            font-family: var(--latin);
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--brown);
+            text-transform: uppercase;
+        }
+        .access-val { font-size: 0.9rem; letter-spacing: 0.06em; line-height: 1.9; }
+        .access-val small { display: block; font-size: 0.76rem; color: var(--muted); }
+        .access-val a { text-decoration: none; }
+
+        .maps-wrap { display: flex; flex-direction: column; gap: 22px; }
+        .map-label {
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            color: var(--ink-soft);
+        }
+        .map-frame {
+            display: block;
+            width: 100%;
+            height: 300px;
+            border: 0;
+            filter: sepia(0.25) saturate(0.85);
+        }
+        .parking-notice {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            background: var(--paper);
+            border-left: 2px solid var(--red);
+            padding: 18px 20px;
+        }
+        .parking-notice-badge {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--red);
+            color: #fff;
+            font-family: var(--latin);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .parking-notice-title { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 4px; }
+        .parking-notice-text { font-size: 0.8rem; line-height: 1.9; color: var(--muted); }
+
+        @media (max-width: 899px) {
+            .access-grid { grid-template-columns: 1fr; }
+            .access-photo { aspect-ratio: 4 / 3; }
+            .access-lead { position: relative; right: auto; bottom: auto; margin: -40px 16px 0; }
+            .access-grid { margin-top: 0; }
+        }
+
+        /* ============================================================
+           SNS / LINKS
+        ============================================================ */
+        .sns-sec { background: var(--bg); }
+
+        .sns-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .sns-link {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 26px 24px;
+            background: var(--paper);
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .sns-link:hover {
+            border-color: var(--red);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(60, 35, 15, 0.1);
+        }
+        .sns-link-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--red);
+        }
+        .sns-link-body { flex: 1; min-width: 0; }
+        .sns-link-name { display: block; font-size: 1rem; font-weight: 600; letter-spacing: 0.08em; }
+        .sns-link-sub { display: block; font-size: 0.76rem; line-height: 1.7; color: var(--muted); }
+        .sns-link .arrow-circle { width: 32px; height: 32px; color: var(--ink); }
+
+        @media (max-width: 899px) {
+            .sns-links { grid-template-columns: 1fr; }
+        }
+
+        /* Instagram プロフィール埋め込み */
+        .insta-feature {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+            gap: clamp(28px, 5vw, 64px);
+            align-items: center;
+            background: var(--paper) var(--noise);
+            padding: clamp(28px, 5vw, 56px);
+            margin-bottom: 28px;
+        }
+        .insta-intro .eyebrow { color: var(--red); }
+        .insta-intro .insta-handle {
+            font-family: var(--latin);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+            color: var(--ink);
+            margin-bottom: 18px;
+        }
+        .insta-handle a { text-decoration: none; transition: color 0.3s; }
+        .insta-handle a:hover { color: var(--red); }
+        .insta-intro p {
+            font-size: 0.88rem;
+            line-height: 2.1;
+            letter-spacing: 0.05em;
+            color: var(--ink-soft);
+            margin-bottom: 28px;
+        }
+        .insta-embed {
+            display: flex;
+            justify-content: center;
+            min-height: 200px;
+        }
+        /* 埋め込みが読み込めない時もリンクとして機能させる */
+        .insta-embed .instagram-media {
+            background: #fff;
+            border: 1px solid var(--line) !important;
+            border-radius: 4px;
+            margin: 0 !important;
+            width: 100%;
+            max-width: 480px !important;
+            min-width: 280px !important;
+            padding: 28px;
+            text-align: center;
+        }
+        .insta-embed .instagram-media a {
+            color: var(--red);
+            font-size: 0.88rem;
+            letter-spacing: 0.08em;
+        }
+        .insta-embed iframe { max-width: 480px !important; }
+        /* 幅の狭い端末で埋め込みがはみ出さないように */
+        @media (max-width: 399px) {
+            .insta-feature { padding: 24px 14px; }
+            .insta-embed { overflow: hidden; }
+            .insta-embed .instagram-media { min-width: 0 !important; padding: 20px 12px; }
+            .insta-embed iframe { min-width: 0 !important; }
+        }
+
+        @media (max-width: 899px) {
+            .insta-feature { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================================
+           図鑑バナー
+        ============================================================ */
+        .zukan-sec {
+            position: relative;
+            background: var(--brown-dark);
+            color: var(--paper);
+            overflow: hidden;
+            padding: clamp(80px, 10vw, 120px) 0;
+        }
+        .zukan-sec::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 50% 70% at 85% 50%, rgba(142, 27, 27, 0.45) 0%, transparent 70%),
+                var(--noise);
+        }
+        .zukan-inner {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 40px;
+            align-items: center;
+        }
+        .zukan-sec .eyebrow { color: rgba(251, 248, 243, 0.6); }
+        .zukan-title {
+            font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+        .zukan-title em { font-style: normal; color: #e6b4a4; }
+        .zukan-desc { font-size: 0.88rem; line-height: 2; letter-spacing: 0.06em; color: rgba(251, 248, 243, 0.72); }
+        .zukan-photos { display: flex; }
+        .zukan-photos img {
+            width: clamp(110px, 13vw, 170px);
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--brown-dark);
+        }
+        .zukan-photos img + img { margin-left: -34px; }
+        .zukan-btn-wrap { grid-column: 1 / -1; }
+
+        @media (max-width: 799px) {
+            .zukan-inner { grid-template-columns: 1fr; }
+            .zukan-photos { order: -1; }
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            background: var(--paper) var(--noise);
+            border-top: 1px solid var(--line);
+            padding: 64px 0 28px;
+        }
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--line);
+        }
+        .footer-logo img { height: 52px; width: auto; }
+        .footer-nav {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 28px;
+        }
+        .footer-nav a {
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            transition: color 0.3s;
+        }
+        .footer-nav a:hover { color: var(--red); }
+        .footer-actions { display: flex; align-items: center; gap: 22px; }
+        .footer-insta { color: var(--ink); display: inline-flex; transition: color 0.3s; }
+        .footer-insta:hover { color: var(--red); }
+
+        .footer-cols {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding: 36px 0;
+        }
+        .footer-col h4 {
+            font-family: var(--latin);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            color: var(--red);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .footer-col p, .footer-col a {
+            font-size: 0.82rem;
+            line-height: 2;
+            letter-spacing: 0.05em;
+            color: var(--ink-soft);
+            text-decoration: none;
+        }
+        .footer-col a { display: block; }
+        .footer-col a:hover { color: var(--red); }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+        .footer-policy { display: flex; gap: 22px; }
+        .footer-policy a { text-decoration: none; }
+        .footer-policy a:hover { color: var(--red); }
+
+        @media (max-width: 699px) {
+            .footer-cols { grid-template-columns: 1fr; gap: 18px; }
+            .footer-top { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* ============================================================
+           MODAL / LIGHTBOX
+        ============================================================ */
+        .menu-modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(29, 24, 20, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s, visibility 0.35s;
+        }
+        .menu-modal-overlay.open { opacity: 1; visibility: visible; }
+        .menu-modal {
+            position: relative;
+            width: min(560px, 100%);
+            max-height: 90svh;
+            overflow-y: auto;
+            background: var(--paper) var(--noise);
+            transform: translateY(16px);
+            transition: transform 0.35s;
+        }
+        .menu-modal-overlay.open .menu-modal { transform: none; }
+        .menu-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .menu-modal-close:hover { color: var(--red); border-color: var(--red); }
+        .menu-modal-img {
+            width: 100%;
+            aspect-ratio: 3 / 2;
+            object-fit: contain;
+            background: radial-gradient(ellipse at 50% 60%, #fffaf2 0%, var(--beige) 80%);
+            padding: 10px;
+        }
+        .menu-modal-body { padding: 28px 32px 34px; }
+        .menu-modal-name { font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; margin-bottom: 12px; }
+        .menu-modal-desc { font-size: 0.86rem; line-height: 2.1; color: var(--ink-soft); margin-bottom: 18px; }
+        .menu-modal-price {
+            font-family: var(--latin);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--red);
+        }
+        .menu-modal-tag {
+            font-family: var(--serif);
+            font-size: 0.72rem;
+            color: var(--brown);
+            border: 1px solid var(--beige-deep);
+            padding: 1px 8px;
+            margin-left: 12px;
+            vertical-align: 4px;
+        }
+
+        /* 具材の説明付き（特製 鶏醤油らぁ麺） */
+        .menu-modal-toppings { margin-bottom: 22px; }
+        .menu-modal-toppings-head {
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        .menu-modal-toppings ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            border-top: 1px solid var(--line);
+        }
+        .menu-modal-toppings li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.84rem;
+            letter-spacing: 0.06em;
+            padding: 9px 2px;
+            border-bottom: 1px solid var(--line);
+        }
+        .menu-modal-toppings li::before {
+            content: '';
+            flex-shrink: 0;
+            width: 5px;
+            height: 5px;
+            background: var(--red);
+            transform: rotate(45deg);
+        }
+
+        .menu-modal-overlay.is-anatomy .menu-modal {
+            width: min(1040px, 100%);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+        .menu-modal-figure {
+            background: radial-gradient(ellipse at 50% 50%, #f7efe3 0%, #ecdfcb 80%);
+            display: flex;
+            align-items: center;
+        }
+        .anatomy { width: 100%; height: auto; display: block; }
+        .anatomy text {
+            font-family: var(--serif);
+            font-size: 27px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            fill: var(--ink);
+            paint-order: stroke;
+            stroke: #f1e6d6;
+            stroke-width: 7px;
+            stroke-linejoin: round;
+        }
+        body.english-mode .anatomy text { font-size: 22px; letter-spacing: 0.02em; }
+        .anatomy-under { stroke: rgba(43, 31, 23, 0.45); stroke-width: 1.2; }
+        .anatomy-leader-out { stroke: rgba(43, 31, 23, 0.4); stroke-width: 1.1; }
+        .anatomy-leader { stroke: rgba(255, 255, 255, 0.92); stroke-width: 1.5; }
+        .anatomy-halo { fill: rgba(255, 255, 255, 0.28); }
+        .anatomy-dot { fill: #fff; }
+        .anatomy-label { opacity: 0; animation: anatomyIn 0.5s ease forwards; }
+        @keyframes anatomyIn { from { opacity: 0; } to { opacity: 1; } }
+        .menu-modal-overlay.is-anatomy .menu-modal-body {
+            align-self: center;
+            padding: 44px 40px;
+        }
+        .menu-modal-overlay.is-anatomy .menu-modal-name { font-size: 1.5rem; }
+
+        @media (max-width: 799px) {
+            .menu-modal-overlay.is-anatomy { align-items: flex-start; }
+            .menu-modal-overlay.is-anatomy .menu-modal { grid-template-columns: 1fr; }
+            .menu-modal-overlay.is-anatomy .menu-modal-body { padding: 26px 24px 32px; }
+        }
+
+        #photoLightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            background: rgba(29, 24, 20, 0.88);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            cursor: zoom-out;
+        }
+        #photoLightbox.open { opacity: 1; visibility: visible; }
+        #photoLightbox img { max-width: min(900px, 100%); max-height: 86svh; object-fit: contain; }
+
+        /* ============================================================
+           かたちの調整（四角い箱を減らし、和の飲食店らしい柔らかさに）
+           ・主要ボタン：角丸のピル型
+           ・補助ボタン：枠を外して「文字＋丸い矢印」
+           ・カード類：枠線をなくし、やわらかい角丸と淡い影
+           ・タグ：小さなピル型
+        ============================================================ */
+        /* 丸めるのは「押せるもの」だけ。カードはわずかな角丸、写真・地図は四角のまま */
+        :root { --r-card: 6px; --r-panel: 8px; }
+
+        /* 主要ボタン（ご予約など） */
+        .btn-red {
+            border-radius: 999px;
+            padding-left: 30px;
+            padding-right: 26px;
+            box-shadow: 0 6px 16px rgba(142, 27, 27, 0.18);
+            transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+        .btn-red:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(142, 27, 27, 0.24); }
+        .btn-red::after { width: 18px; height: 18px; background: none; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.7);
+            -webkit-mask: none; mask: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='white' stroke-width='1.4'%3E%3Cpath d='M3 7h8M7.5 3.5L11 7l-3.5 3.5'/%3E%3C/svg%3E");
+            background-size: 10px; background-position: center; background-repeat: no-repeat; }
+        .btn-red:hover::after { width: 18px; }
+        .header-reserve { padding: 10px 18px 10px 22px; }
+        .header-reserve::after { width: 16px; height: 16px; }
+        @media (max-width: 639px) {
+            .header-reserve { padding: 0 18px; border-radius: 999px; box-shadow: 0 4px 10px rgba(142, 27, 27, 0.18); }
+        }
+
+        /* 補助ボタン：枠なし、文字＋丸矢印 */
+        .menu-more-btn,
+        .menu-close-btn {
+            border: none;
+            background: none;
+            padding: 10px 6px;
+            gap: 16px;
+            font-size: 0.92rem;
+        }
+        .menu-more-btn::after,
+        .menu-close-btn::after {
+            content: '';
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--ink);
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%231d1814' stroke-width='1.3'%3E%3Cpath d='M7 2v10M3 8l4 4 4-4'/%3E%3C/svg%3E") center / 14px no-repeat;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .menu-close-btn::after { transform: rotate(180deg); }
+        .menu-more-btn:hover, .menu-close-btn:hover { background: none; color: var(--red); }
+        .menu-more-btn:hover::after { transform: translateY(3px); border-color: var(--red); }
+        .menu-close-btn:hover::after { transform: rotate(180deg) translateY(3px); border-color: var(--red); }
+        /* 中の「↓」「↑」の文字は丸矢印に置き換え */
+        .menu-more-btn .arrow-txt, .menu-close-btn .arrow-txt { display: none; }
+
+        /* 言語切替：小さなピル */
+        /* 言語切替は下線のテキストのまま */
+
+        /* 「ご来店の前に」：箱をやめて、丸いアイコン＋文字を区切り線で並べる */
+        .quick-links ul { gap: 0; }
+        .quick-links li + li { border-left: 1px solid var(--line); }
+        .quick-link {
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            padding: 6px 10px;
+            background: none;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+        }
+        .quick-link::after { display: none; }
+        .quick-link:hover { transform: none; box-shadow: none; }
+        .quick-link-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            box-shadow: 0 0 0 1px rgba(142, 27, 27, 0.25);
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+        }
+        .quick-link:hover .quick-link-icon { background: var(--red); color: #fff; transform: translateY(-3px); }
+        .quick-link-label { text-align: center; }
+        @media (max-width: 799px) {
+            .quick-links ul { row-gap: 18px; }
+            .quick-links li:nth-child(3) { border-left: none; }
+            .quick-link { flex-direction: column; justify-content: flex-start; padding: 4px 6px; min-height: 0; }
+            .quick-link-icon { width: 52px; height: 52px; }
+            .quick-link-label { text-align: center; }
+        }
+
+        /* カード類：枠線なし・角丸・淡い影 */
+        .guide-card,
+        .sns-link,
+        .insta-feature,
+        #menuFull,
+        .access-lead,
+        .parking-notice,
+        .guide-note {
+            border-radius: var(--r-card);
+            border: none;
+        }
+        .guide-card, .sns-link { box-shadow: 0 6px 18px rgba(90, 55, 25, 0.05); }
+        .sns-link:hover { border: none; box-shadow: 0 14px 30px rgba(90, 55, 25, 0.12); }
+        .guide-note, .parking-notice { border-left: none; position: relative; overflow: hidden; }
+        .guide-note::before, .parking-notice::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red);
+        }
+        .access-lead::before { display: none; }
+        .seasonal { border-radius: var(--r-panel); }
+        .menu-modal, .zukan-modal-inner { border-radius: var(--r-panel); }
+        .menu-modal-close { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .access-photo, .map-frame { border-radius: 0; }
+        .menu-desc-photo { border-radius: 4px; overflow: hidden; }
+        .owner-photo { border-radius: 0; }
+        @media (max-width: 899px) { .owner-photo { border-radius: 0; } }
+        @media (max-width: 899px) {
+            .ingredients-more { border-radius: var(--r-card); }
+        }
+
+        /* タグ・ラベル：小さなピル型 */
+        .menu-tag, .menu-card-tag, .menu-modal-tag, .zukan-card-tag, .zukan-modal-tag { border-radius: 2px; }
+        .is-featured .menu-card-label { border-radius: 2px; }
+        .parking-notice-badge, .guide-note-mark { border-radius: 50%; }
+        .pc-nav .zukan-link a { border-radius: 2px; }
+        .insta-embed .instagram-media { border-radius: var(--r-card) !important; }
+
+        /* ============================================================
+           囲みを減らす調整
+           ・カードの背景や影はやめ、余白と区切り線で整理する
+           ・リンクはホバーで文字が少し薄くなる／下線が伸びる
+           ・お品書きや注意書きなど「枠が意味を持つ所」だけ二重線で囲う
+           ・主要ボタン（ご予約など）は内側に白い細線を入れた赤いボタン
+        ============================================================ */
+
+        /* --- 主要ボタン：赤地＋内側の白い細線（二重線のように見える） --- */
+        .btn-red {
+            border-radius: 999px;
+            box-shadow: inset 0 0 0 3px var(--red), inset 0 0 0 4px rgba(255, 255, 255, 0.75);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .btn-red:hover {
+            background: var(--red);
+            opacity: 0.82;
+            transform: none;
+            box-shadow: inset 0 0 0 3px var(--red), inset 0 0 0 4px rgba(255, 255, 255, 0.75);
+        }
+        @media (max-width: 639px) {
+            .header-reserve { box-shadow: inset 0 0 0 2px var(--red), inset 0 0 0 3px rgba(255, 255, 255, 0.75); }
+        }
+
+        /* --- テキストリンク：ホバーで薄く --- */
+        .pc-nav a:hover,
+        .footer-nav a:hover,
+        .footer-col a:hover,
+        .footer-policy a:hover,
+        .lang-btn:hover,
+        .guide-card-link:hover,
+        .quick-link:hover .quick-link-label,
+        .menu-more-btn:hover,
+        .menu-close-btn:hover { color: inherit; opacity: 0.55; }
+        .pc-nav a, .footer-nav a, .footer-col a, .footer-policy a, .lang-btn, .guide-card-link,
+        .quick-link-label, .menu-more-btn, .menu-close-btn { transition: opacity 0.3s; }
+        .pc-nav a::after { display: none; }
+        .pc-nav .zukan-link a { border: none; padding: 6px 0; border-bottom: 1px solid currentColor; border-radius: 0; }
+
+        /* 丸矢印付きのリンクは、ホバーで矢印が少し右へ */
+        .guide-card-link .arrow-circle, .sns-link .arrow-circle, .news-item .arrow-circle { transition: transform 0.3s; }
+        .guide-card-link:hover .arrow-circle,
+        .sns-link:hover .arrow-circle,
+        .news-item a:hover .arrow-circle { background: none; color: inherit; border-color: currentColor; transform: translateX(4px); }
+        .news-item a:hover { background: none; opacity: 0.6; }
+
+        /* --- 来店ガイドのカード：箱をやめて上に二重線 --- */
+        .guide-info { gap: 0 clamp(20px, 3vw, 40px); }
+        .guide-card {
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 22px 0 6px;
+            border-top: 3px double var(--beige-deep);
+        }
+        .guide-card-link { padding-top: 14px; }
+
+        /* --- 注意書き：上下を二重線で挟む --- */
+        .guide-note, .parking-notice {
+            background: none;
+            border-radius: 0;
+            border-top: 3px double rgba(142, 27, 27, 0.45);
+            border-bottom: 3px double rgba(142, 27, 27, 0.45);
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+        .guide-note::before, .parking-notice::before { display: none; }
+
+        /* --- 各種リンク：箱をやめて区切り線 --- */
+        .sns-links { gap: 0 clamp(20px, 3vw, 40px); }
+        .sns-link {
+            background: none;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 22px 0;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+        .sns-link:hover { transform: none; box-shadow: none; border-color: var(--line); }
+        .sns-link:hover .sns-link-name { opacity: 0.6; }
+        .sns-link-name { transition: opacity 0.3s; }
+        .sns-link-icon { background: none; box-shadow: inset 0 0 0 1px rgba(142, 27, 27, 0.3); }
+        @media (max-width: 899px) { .sns-link + .sns-link { border-top: none; } }
+
+        /* --- Instagram：背景の箱をやめる --- */
+        .insta-feature { background: none; border-radius: 0; padding-left: 0; padding-right: 0; border-bottom: 1px solid var(--line); }
+
+        /* --- お品書き（全メニュー）：お店の品書きのような二重線の枠 --- */
+        #menuFull {
+            border-radius: 0;
+            box-shadow: none;
+            border: 3px double var(--beige-deep);
+            outline: 1px solid var(--line);
+            outline-offset: 6px;
+        }
+
+        /* --- 写真付きの小物は角を戻す --- */
+        .menu-desc-photo { border-radius: 0; }
+    </style>
+</head>
+<body>
+
+    <!-- 梅の枝（装飾用シンボル） -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="plum" viewBox="0 0 400 300">
+            <g fill="none" stroke="currentColor" stroke-linecap="round">
+                <path d="M0 292 C58 252 108 222 160 172 C200 132 242 110 302 90" stroke-width="5"/>
+                <path d="M160 172 C172 132 164 102 182 60" stroke-width="3"/>
+                <path d="M232 118 C252 80 282 60 322 40" stroke-width="2.5"/>
+                <path d="M92 232 C80 200 92 170 70 140" stroke-width="2.5"/>
+                <path d="M302 90 C332 86 362 70 392 72" stroke-width="2"/>
+                <path d="M120 206 C140 200 150 190 170 196" stroke-width="1.8"/>
+            </g>
+            <g style="fill: var(--blossom, #8e1b1b)">
+                <circle cx="182" cy="60" r="6"/><circle cx="172" cy="86" r="4.5"/>
+                <circle cx="322" cy="40" r="6"/><circle cx="298" cy="58" r="4"/>
+                <circle cx="70" cy="140" r="5.5"/><circle cx="88" cy="178" r="4"/>
+                <circle cx="392" cy="72" r="5"/><circle cx="354" cy="74" r="4"/>
+                <circle cx="252" cy="96" r="4.5"/><circle cx="170" cy="196" r="4"/>
+                <circle cx="206" cy="128" r="3.5"/>
+            </g>
+        </symbol>
+    </svg>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <a href="#" class="header-logo" aria-label="らぁ麺 とうひち トップへ">
+            <img src="logo-dark.webp" alt="らぁ麺 とうひち" class="logo-dark">
+            <img src="logo.webp" alt="" class="logo-light">
+        </a>
+        <div class="header-right">
+            <ul class="pc-nav">
+                <li><a href="#menu"><span class="lang-ja">お品書き</span><span class="lang-en">Menu</span></a></li>
+                <li><a href="#concept"><span class="lang-ja">こだわり</span><span class="lang-en">Concept</span></a></li>
+                <li><a href="#guide"><span class="lang-ja">初めての方へ</span><span class="lang-en">First Visit</span></a></li>
+                <li><a href="#faq"><span class="lang-ja">よくある質問</span><span class="lang-en">FAQ</span></a></li>
+                <li><a href="#access"><span class="lang-ja">店舗案内</span><span class="lang-en">Access</span></a></li>
+                <li><a href="#sns"><span class="lang-ja">お知らせ・SNS</span><span class="lang-en">Info</span></a></li>
+                <li class="zukan-link"><a href="zukan.html"><span class="lang-ja">らぁ麺図鑑</span><span class="lang-en">Encyclopedia</span></a></li>
+                <li><button class="lang-btn" id="langToggle">English</button></li>
+            </ul>
+            <a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener" class="btn-red header-reserve">
+                <span class="lang-ja">ご予約</span><span class="lang-en">Reserve</span>
+            </a>
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="メニューを開く" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav>
+            <ul>
+                <li><a href="#menu" class="mob-link"><span class="lang-ja">お品書き</span><span class="lang-en">Menu</span><span class="arrow">→</span></a></li>
+                <li><a href="#concept" class="mob-link"><span class="lang-ja">こだわり</span><span class="lang-en">Concept</span><span class="arrow">→</span></a></li>
+                <li><a href="#guide" class="mob-link"><span class="lang-ja">初めての方へ</span><span class="lang-en">First Visit</span><span class="arrow">→</span></a></li>
+                <li><a href="#faq" class="mob-link"><span class="lang-ja">よくある質問</span><span class="lang-en">FAQ</span><span class="arrow">→</span></a></li>
+                <li><a href="#access" class="mob-link"><span class="lang-ja">店舗案内</span><span class="lang-en">Access</span><span class="arrow">→</span></a></li>
+                <li><a href="#sns" class="mob-link"><span class="lang-ja">お知らせ・SNS</span><span class="lang-en">Info</span><span class="arrow">→</span></a></li>
+                <li><a href="zukan.html" class="mob-link"><span class="lang-ja">らぁ麺図鑑</span><span class="lang-en">Encyclopedia</span><span class="arrow">→</span></a></li>
+                <li><a href="https://tousugu2020.thebase.in/" target="_blank" rel="noopener" class="mob-link"><span class="lang-ja">オンラインショップ</span><span class="lang-en">Online Shop</span><span class="arrow">→</span></a></li>
+            </ul>
+        </nav>
+        <a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener" class="btn-red">
+            <span class="lang-ja">ご予約・お問い合わせ</span><span class="lang-en">Reservations</span>
+        </a>
+        <div class="mobile-lang-wrap">
+            <button class="lang-btn" id="mobileLangToggle">English</button>
+        </div>
+    </div>
+
+    <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="top">
+        <div class="hero-media" aria-hidden="true">
+            <div class="hero-photo">
+                <img src="hero-bg.webp" alt="" class="hero-bg" fetchpriority="high">
+                <img src="hero-bowl.webp" alt="" class="hero-bowl-cut">
+            </div>
+            <div class="hero-shade"></div>
+            <div class="hero-word">TOUHICHI</div>
+        </div>
+
+        <div class="hero-text">
+            <h1 class="hero-title">
+                <span class="lang-ja">日常に、<br>少し<em>特別</em>な一杯。</span>
+                <span class="lang-en">A <em>special</em> bowl<br>for every day.</span>
+            </h1>
+            <p class="hero-brand-en" aria-hidden="true">RAMEN TOUHICHI</p>
+            <img src="hero-bowl-sp.webp" alt="特製 鶏醤油らぁ麺" class="hero-bowl-sp" width="971" height="728">
+            <p class="hero-sub">
+                <span class="lang-ja">京都・修学院で、<br>澄んだ淡麗スープのらぁ麺を。</span>
+                <span class="lang-en">In Shugakuin, Kyoto —<br>ramen with a light, clear broth.</span>
+            </p>
+            <ul class="hero-chips">
+                <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><polygon points="12,3 13.8,8.4 19.5,8.4 14.9,11.8 16.6,17.2 12,13.8 7.4,17.2 9.1,11.8 4.5,8.4 10.2,8.4"/></svg>
+                    <span class="lang-ja">ミシュラン掲載</span><span class="lang-en">Michelin Listed</span>
+                </li>
+                <li><span class="lang-ja">京都・修学院</span><span class="lang-en">Kyoto · Shugakuin</span></li>
+                <li><span class="lang-ja">淡麗鶏清湯</span><span class="lang-en">Light Chicken Broth</span></li>
+            </ul>
+            <a href="#menu" class="hero-scroll" aria-label="Scroll">
+                <span class="hero-scroll-circle">
+                    <svg viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M8 1v19M2 14l6 6 6-6"/></svg>
+                </span>
+                <span>SCROLL</span>
+            </a>
+        </div>
+
+        <div class="hero-side" aria-hidden="true">
+            <span class="hero-side-text">RAMEN · TOUHICHI · KYOTO</span>
+            <span class="seal"><span>と</span><span>う</span><span>ひ</span><span>ち</span></span>
+        </div>
+    </section>
+
+    <!-- ===== ご来店の前に（クイックリンク） ===== -->
+    <section class="quick-band" aria-label="ご案内">
+        <div class="container">
+            <nav class="quick-links">
+                <p class="quick-links-head"><span class="lang-ja">ご来店の前に</span><span class="lang-en">Before you visit</span></p>
+                <ul>
+                <li><a href="#guide" class="quick-link">
+                    <span class="quick-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></span>
+                    <span class="quick-link-label"><span class="lang-ja">初めての方へ</span><span class="lang-en">First visit</span></span>
+                </a></li>
+                <li><a href="#menu" class="quick-link">
+                    <span class="quick-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18c0 5-4 8-9 8s-9-3-9-8z"/><path d="M9 19v2h6v-2"/><path d="M15 4l5 5M17 3l4 4"/></svg></span>
+                    <span class="quick-link-label"><span class="lang-ja">お品書き</span><span class="lang-en">Menu</span></span>
+                </a></li>
+                <li><a href="#parking" class="quick-link">
+                    <span class="quick-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M10 17V7h3.5a3 3 0 0 1 0 6H10"/></svg></span>
+                    <span class="quick-link-label"><span class="lang-ja">駐車場</span><span class="lang-en">Parking</span></span>
+                </a></li>
+                <li><a href="#access" class="quick-link">
+                    <span class="quick-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+                    <span class="quick-link-label"><span class="lang-ja">営業時間・<wbr>アクセス</span><span class="lang-en">Hours &amp; Access</span></span>
+                </a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- ===== MENU ===== -->
+    <section id="menu" class="sec menu-sec">
+        <div class="container">
+            <div class="menu-top">
+                <div class="menu-intro fade-in">
+                    <div>
+                        <span class="eyebrow">Menu</span>
+                        <h2 class="sec-title"><span class="lang-ja">お品書き</span><span class="lang-en">Menu</span></h2>
+                    </div>
+                    <p><span class="lang-ja">淡麗な鶏醤油を軸に、<br>煮干・鶏白湯・つけそば・まぜそばまで。</span><span class="lang-en">Built around our clear chicken shoyu — plus niboshi, paitan, tsukesoba and mazesoba.</span></p>
+                    <a href="#menuFull" class="line-link" id="menuIntroLink"><span class="lang-ja">お品書きを見る</span><span class="lang-en">Full menu</span></a>
+                </div>
+
+                <div class="menu-cards fade-in">
+                    <button type="button" class="menu-card is-featured"
+                         data-anatomy="tokushoyu"
+                         data-src="tokushoyu.webp"
+                         data-name-ja="特製 鶏醤油らぁ麺"
+                         data-name-en="Special Chicken Soy Sauce Ramen"
+                         data-desc-ja="炙り豚バラチャーシュー、ワンタン、味玉を添えた至高の一杯。鶏の旨みを引き出した淡麗スープが、特製トッピングと見事に調和します。"
+                         data-desc-en="Our signature bowl topped with roasted pork belly chashu, wontons, and a marinated egg. The delicate chicken broth harmonizes beautifully with each premium topping."
+                         data-price="¥1,700">
+                        <span class="menu-card-photo"><img src="tokushoyu.webp" alt="" loading="lazy"></span>
+                        <span class="menu-card-label"><span class="lang-ja">一番人気</span><span class="lang-en">Signature</span></span>
+                        <span class="menu-card-foot">
+                            <span class="menu-card-name"><span class="lang-ja">特製<br>鶏醤油らぁ麺</span><span class="lang-en">Special<br>Chicken Shoyu</span></span>
+                            <span class="menu-card-desc"><span class="lang-ja">炙り豚バラチャーシュー、ワンタン、味玉を添えた至高の一杯。鶏の旨みを引き出した淡麗スープが、特製トッピングと見事に調和します。</span><span class="lang-en">Our signature bowl with roasted pork belly chashu, wontons, and a marinated egg — the delicate chicken broth in perfect harmony with every topping.</span></span>
+                            <span class="menu-card-row">
+                                <span class="menu-card-price">¥1,700</span>
+                                <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="menu-card"
+                         data-src="tokutsuke.webp"
+                         data-anatomy="tokutsuke"
+                         data-name-ja="特製 鶏醤油つけそば"
+                         data-name-en="Special Chicken Dipping Noodles"
+                         data-desc-ja="昆布水に浸した細麺を、熱々の地鶏スープにくぐらせてお召し上がりください。炙り豚バラ、ワンタン、味玉入りの贅沢な一品です。"
+                         data-desc-en="Thin noodles soaked in kelp water, served with hot free-range chicken dipping broth. Includes roasted pork belly, wontons, and a marinated egg."
+                         data-price="¥2,200">
+                        <span class="menu-card-photo"><img src="tokutsuke.webp" alt="" loading="lazy"></span>
+                        <span class="menu-card-label"><span class="lang-ja">つけ麺人気</span><span class="lang-en">Popular</span></span>
+                        <span class="menu-card-foot">
+                            <span class="menu-card-name"><span class="lang-ja">特製<br>鶏醤油つけそば</span><span class="lang-en">Special<br>Tsukesoba</span></span>
+                            <span class="menu-card-row">
+                                <span class="menu-card-price">¥2,200</span>
+                                <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="menu-card"
+                         data-src="tokuniboshi.webp"
+                         data-anatomy="tokuniboshi"
+                         data-name-ja="特製 煮干らぁ麺"
+                         data-name-en="Special Sardine Ramen"
+                         data-desc-ja="数種の煮干しをブレンドした100%魚介スープに、豪華な特製トッピングを添えました。豊かな旨みとキレのある後味が特徴です。"
+                         data-desc-en="100% seafood broth made from a blend of dried sardines, topped with premium ingredients. Rich umami with a clean, lingering finish."
+                         data-price="¥1,700">
+                        <span class="menu-card-photo"><img src="tokuniboshi.webp" alt="" loading="lazy"></span>
+                        <span class="menu-card-label"><span class="lang-ja">上品な旨み</span><span class="lang-en">Refined Umami</span></span>
+                        <span class="menu-card-foot">
+                            <span class="menu-card-name"><span class="lang-ja">特製<br>煮干らぁ麺</span><span class="lang-en">Special<br>Niboshi</span></span>
+                            <span class="menu-card-row">
+                                <span class="menu-card-price">¥1,700</span>
+                                <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button type="button" class="menu-card"
+                         data-src="tokupaitan.webp"
+                         data-anatomy="tokupaitan"
+                         data-name-ja="特製 鶏白湯らぁ麺"
+                         data-name-en="Special Chicken Paitan"
+                         data-desc-ja="濃厚でクリーミーな鶏白湯スープに、特製トッピングを豪華にのせた一杯。とろりとしたスープが麺によく絡みます。"
+                         data-desc-en="Rich and creamy chicken paitan broth served with premium toppings. The thick, velvety soup clings perfectly to every strand of noodle."
+                         data-price="¥1,700"
+                         data-tag-ja="夏季販売停止"
+                         data-tag-en="Summer: unavailable">
+                        <span class="menu-card-photo"><img src="tokupaitan.webp" alt="" loading="lazy"></span>
+                        <span class="menu-card-label"><span class="lang-ja">濃厚・まろやか</span><span class="lang-en">Rich &amp; Creamy</span></span>
+                        <span class="menu-card-foot">
+                            <span class="menu-card-name"><span class="lang-ja">特製<br>鶏白湯らぁ麺</span><span class="lang-en">Special<br>Paitan</span></span>
+                            <span class="menu-card-row">
+                                <span class="menu-card-price">¥1,700<span class="menu-card-tag"><span class="lang-ja">夏季停止</span><span class="lang-en">No summer</span></span></span>
+                                <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+
+                <a href="zukan.html" class="seasonal fade-in">
+                    <span class="seasonal-title"><span class="lang-ja">季節の一杯</span><span class="lang-en">Seasonal Bowls</span></span>
+                    <span class="eyebrow">Limited</span>
+                    <p><span class="lang-ja">週替わり・季節限定のらぁ麺は「らぁ麺図鑑」でご覧いただけます。</span><span class="lang-en">See our weekly and seasonal limited bowls in the Ramen Encyclopedia.</span></p>
+                    <img src="images/ramen3.webp" alt="" class="seasonal-img" loading="lazy">
+                    <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                </a>
+            </div>
+
+            <p class="menu-note-tax">
+                <span class="lang-ja">※ 価格はすべて税込です。</span>
+                <span class="lang-en">All prices include tax.</span>
+            </p>
+
+            <button class="menu-more-btn fade-in" id="menuToggleBtn">
+                <span class="lang-ja">すべてのお品書きを見る</span>
+                <span class="lang-en">View Full Menu</span>
+            </button>
+
+            <div id="menuFull" style="display:none;">
+
+                <!-- らぁ麺 -->
+                <div class="menu-category-head">
+                    <span class="lang-ja">らぁ麺・つけそば・まぜそば</span>
+                    <span class="lang-en">Ramen / Tsukesoba / Mazesoba</span>
+                </div>
+                <ul class="menu-list menu-full-list">
+                    <li class="menu-list-item has-desc" data-anatomy="tokushoyu" data-src="tokushoyu.webp" data-price="¥1,700" data-name-ja="特製 鶏醤油らぁ麺" data-name-en="Special Chicken Soy Sauce" data-desc-ja="炙り豚バラチャーシュー、ワンタン、味玉を添えた至高の一杯。鶏の旨みを引き出した淡麗スープが、特製トッピングと見事に調和します。" data-desc-en="Our signature bowl with roasted pork belly chashu, wontons, and a marinated egg. The delicate chicken broth harmonizes beautifully with each premium topping.">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">特製 鶏醤油らぁ麺</span><span class="lang-en">Special Chicken Soy Sauce</span></span>
+                            <span class="menu-full-price">¥1,700</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="tokushoyu.webp" alt="特製 鶏醤油らぁ麺" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">炙り豚バラチャーシュー、ワンタン、味玉を添えた至高の一杯。鶏の旨みを引き出した淡麗スープが、特製トッピングと見事に調和します。</span><span class="lang-en">Our signature bowl with roasted pork belly chashu, wontons, and a marinated egg. The delicate chicken broth harmonizes beautifully with each premium topping.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc" data-anatomy="shoyu" data-src="shoyu.webp" data-price="¥1,300" data-name-ja="鶏醤油らぁ麺" data-name-en="Chicken Soy Sauce Ramen" data-desc-ja="厳選した地鶏のガラと丸鶏を長時間炊き出した淡麗鶏清湯スープ。自家製醤油ダレが引き立てる、とうひちの原点となる一杯。" data-desc-en="Clear and delicate chicken broth slow-simmered from free-range bones and whole birds, paired with house-made soy tare — the original bowl that defines Tohichi.">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">鶏醤油らぁ麺</span><span class="lang-en">Chicken Soy Sauce Ramen</span></span>
+                            <span class="menu-full-price">¥1,300</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="shoyu.webp" alt="鶏醤油らぁ麺" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">厳選した地鶏のガラと丸鶏を長時間炊き出した淡麗鶏清湯スープ。自家製醤油ダレが引き立てる、とうひちの原点となる一杯。</span><span class="lang-en">Clear and delicate chicken broth slow-simmered from free-range bones and whole birds, paired with house-made soy tare — the original bowl that defines Tohichi.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc" data-anatomy="tokutsuke" data-src="tokutsuke.webp" data-price="¥2,200" data-name-ja="特製 鶏醤油つけそば" data-name-en="Special Dipping Noodles" data-desc-ja="昆布水に浸した自家製細麺を、熱々の地鶏スープにくぐらせてお召し上がりください。炙り豚バラ、ワンタン、味玉入りの贅沢な一品。" data-desc-en="House-made thin noodles soaked in kelp water, served with hot free-range chicken dipping broth. Includes roasted pork belly, wontons, and a marinated egg.">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">特製 鶏醤油つけそば</span><span class="lang-en">Special Dipping Noodles</span></span>
+                            <span class="menu-full-price">¥2,200</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="tokutsuke.webp" alt="特製 鶏醤油つけそば" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">昆布水に浸した自家製細麺を、熱々の地鶏スープにくぐらせてお召し上がりください。炙り豚バラ、ワンタン、味玉入りの贅沢な一品。</span><span class="lang-en">House-made thin noodles soaked in kelp water, served with hot free-range chicken dipping broth. Includes roasted pork belly, wontons, and a marinated egg.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">鶏醤油つけそば</span><span class="lang-en">Chicken Dipping Noodles</span></span>
+                            <span class="menu-full-price">¥1,700</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="tsuke.webp" alt="鶏醤油つけそば" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">昆布水に浸した自家製細麺と、凝縮した地鶏つけ汁の相性は抜群。鶏の旨みをダイレクトに味わう一杯。</span><span class="lang-en">House-made noodles soaked in kelp water, dipped into concentrated free-range chicken broth. A pure expression of chicken umami.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc" data-anatomy="tokuniboshi" data-src="tokuniboshi.webp" data-price="¥1,700" data-name-ja="特製 煮干らぁ麺" data-name-en="Special Sardine Ramen" data-desc-ja="数種の煮干しをブレンドした100%魚介スープに、炙り豚バラ、ワンタン、味玉を添えた豪華な一杯。豊かな旨みとキレのある後味が特徴です。" data-desc-en="100% seafood broth blended from multiple dried sardine varieties, topped with roasted pork belly, wontons, and a marinated egg. Rich umami with a clean finish.">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">特製 煮干らぁ麺</span><span class="lang-en">Special Sardine Ramen</span></span>
+                            <span class="menu-full-price">¥1,700</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="tokuniboshi.webp" alt="特製 煮干らぁ麺" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">数種の煮干しをブレンドした100%魚介スープに、炙り豚バラ、ワンタン、味玉を添えた豪華な一杯。豊かな旨みとキレのある後味が特徴です。</span><span class="lang-en">100% seafood broth blended from multiple dried sardine varieties, topped with roasted pork belly, wontons, and a marinated egg. Rich umami with a clean finish.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">煮干らぁ麺</span><span class="lang-en">Sardine Ramen</span></span>
+                            <span class="menu-full-price">¥1,300</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="niboshi.webp" alt="煮干らぁ麺" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">厳選した煮干しの旨みと香りを丁寧に引き出した、キレのある魚介スープ。余韻まで美しい一杯。</span><span class="lang-en">Carefully extracted dried sardine umami and fragrance, delivering a seafood broth with a beautiful, lingering finish.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc" data-anatomy="tokupaitan" data-src="tokupaitan.webp" data-price="¥1,700" data-name-ja="特製 鶏白湯らぁ麺" data-name-en="Special Chicken Paitan Summer: unavailable" data-desc-ja="地鶏を丁寧に炊き上げた濃厚でまろやかな白湯スープに、炙り豚バラ、ワンタン、味玉を豪華に添えた一杯。クリーミーな口当たりが麺によく絡みます。" data-desc-en="Rich, mellow chicken paitan broth slowly simmered to perfection, generously topped with roasted pork belly, wontons, and a marinated egg. Creamy and deeply satisfying.">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">特製 鶏白湯らぁ麺 <span class="menu-tag lang-ja">夏季販売停止</span></span><span class="lang-en">Special Chicken Paitan <span class="menu-tag">Summer: unavailable</span></span></span>
+                            <span class="menu-full-price">¥1,700</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="tokupaitan.webp" alt="特製 鶏白湯らぁ麺" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">地鶏を丁寧に炊き上げた濃厚でまろやかな白湯スープに、炙り豚バラ、ワンタン、味玉を豪華に添えた一杯。クリーミーな口当たりが麺によく絡みます。</span><span class="lang-en">Rich, mellow chicken paitan broth slowly simmered to perfection, generously topped with roasted pork belly, wontons, and a marinated egg. Creamy and deeply satisfying.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">鶏白湯らぁ麺 <span class="menu-tag lang-ja">夏季販売停止</span></span><span class="lang-en">Chicken Paitan <span class="menu-tag">Summer: unavailable</span></span></span>
+                            <span class="menu-full-price">¥1,300</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="paitan.webp" alt="鶏白湯らぁ麺" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">地鶏を丸ごと炊き上げたクリーミーな鶏白湯スープ。とろりと滑らかなスープが、自家製麺との絶妙なハーモニーを生み出します。</span><span class="lang-en">Whole free-range chicken simmered into a creamy paitan broth. The silky smooth texture creates beautiful harmony with our house-made noodles.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">鶏油まぜそば</span><span class="lang-en">Chicken Oil Maze-Soba</span></span>
+                            <span class="menu-full-price">¥1,100</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="maze.webp" alt="鶏油まぜそば" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">香り高い地鶏の鶏油をベースにしたタレと自家製麺を、丁寧に混ぜてお召し上がりください。スープなしでも深く広がる、とうひちの旨みを味わえる一品。</span><span class="lang-en">House-made noodles tossed in fragrant free-range chicken oil tare. No broth needed — just deep, concentrated Tohichi umami in every bite.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item has-desc">
+                        <button type="button" class="menu-full-row" aria-expanded="false" onclick="toggleMenuDesc(this.parentElement)">
+                            <span class="menu-full-name"><span class="lang-ja">豚まぜそば <span class="menu-tag lang-ja">夜限定</span></span><span class="lang-en">Pork Maze-Soba <span class="menu-tag">Night only</span></span></span>
+                            <span class="menu-full-price">¥1,100</span>
+                            <span class="menu-desc-chevron"><svg width="11" height="7" viewBox="0 0 11 7" fill="none"><path d="M1 1l4.5 4.5L10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                        </button>
+                        <div class="menu-desc-body"><div class="menu-desc-inner"><div class="menu-desc-photo"><img src="butamaze.webp" alt="豚まぜそば" loading="lazy"></div><p class="menu-desc-text"><span class="lang-ja">豚の旨みを凝縮した特製ダレと自家製麺を合わせた、夜のとうひちを代表する一品。ガッツリとした食べ応えの中に、丁寧な旨みが光ります。</span><span class="lang-en">House-made noodles tossed in rich, concentrated pork tare — a signature of Tohichi's evening service. Bold and satisfying, with refined depth.</span></p></div></div>
+                    </li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">鶏醤油らぁ麺（小）</span><span class="lang-en">Chicken Soy Sauce (Small)</span></span><span class="menu-full-price">¥1,000</span></div></li>
+                </ul>
+
+                <!-- トッピング -->
+                <div class="menu-category-head">
+                    <span class="lang-ja">トッピング</span>
+                    <span class="lang-en">Toppings</span>
+                </div>
+                <ul class="menu-list menu-full-list">
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">麺大盛り</span><span class="lang-en">Large Noodle</span></span><span class="menu-full-price">¥150</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">味玉</span><span class="lang-en">Marinated Egg</span></span><span class="menu-full-price">¥150</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">豚チャーシュー増し</span><span class="lang-en">Pork Char Siu Extra</span></span><span class="menu-full-price">¥400</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">鶏チャーシュー増し</span><span class="lang-en">Chicken Char Siu Extra</span></span><span class="menu-full-price">¥300</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">黒豚ワンタン</span><span class="lang-en">Black Pork Wonton</span></span><span class="menu-full-price">¥350</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">メンマ増し</span><span class="lang-en">Bamboo Shoot Extra</span></span><span class="menu-full-price">¥200</span></div></li>
+                </ul>
+
+                <!-- サイドメニュー -->
+                <div class="menu-category-head">
+                    <span class="lang-ja">サイドメニュー</span>
+                    <span class="lang-en">Side Menu</span>
+                </div>
+                <ul class="menu-list menu-full-list">
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">炙り豚肉飯</span><span class="lang-en">Roasted Pork Rice</span></span><span class="menu-full-price">¥500</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">鶏飯</span><span class="lang-en">Chicken Rice</span></span><span class="menu-full-price">¥500</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">ご飯</span><span class="lang-en">Steamed Rice</span></span><span class="menu-full-price">¥200</span></div></li>
+                </ul>
+
+                <!-- ドリンク -->
+                <div class="menu-category-head">
+                    <span class="lang-ja">ドリンク</span>
+                    <span class="lang-en">Drinks</span>
+                </div>
+                <ul class="menu-list menu-full-list">
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">サッポロラガービール</span><span class="lang-en">Sapporo Lager Beer</span></span><span class="menu-full-price">¥700</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">ハートランドビール</span><span class="lang-en">Heartland Beer</span></span><span class="menu-full-price">¥500</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">ノンアルコールビール</span><span class="lang-en">Non-Alcoholic Beer</span></span><span class="menu-full-price">¥400</span></div></li>
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">コーラ</span><span class="lang-en">Cola</span></span><span class="menu-full-price">¥400</span></div></li>
+                </ul>
+
+                <!-- グッズ -->
+                <div class="menu-category-head">
+                    <span class="lang-ja">グッズ</span>
+                    <span class="lang-en">Goods</span>
+                </div>
+                <ul class="menu-list menu-full-list">
+                    <li class="menu-list-item"><div class="menu-full-row"><span class="menu-full-name"><span class="lang-ja">Tシャツ</span><span class="lang-en">T-Shirt</span></span><span class="menu-full-price">¥4,000</span></div></li>
+                </ul>
+
+                <!-- 閉じるボタン -->
+                <button class="menu-close-btn" id="menuCloseBtn">
+                    <span class="lang-ja">閉じる</span>
+                    <span class="lang-en">Close</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONCEPT ===== -->
+    <section id="concept" class="concept-sec">
+        <!-- 素材ビジュアル（PC / スマホで背景画像を切り替え） -->
+        <div class="ingredients-hero">
+            <div class="container ingredients-inner">
+                <div class="ingredients-text fade-in">
+                    <p class="ingredients-eyebrow">The<br>Ingredients</p>
+                    <h2 class="ingredients-title">
+                        <span class="lang-ja">素材が、<br>この一杯を<br>つくる。</span>
+                        <span class="lang-en">Ingredients<br>make<br>the bowl.</span>
+                    </h2>
+                    <p class="ingredients-lead">
+                        <span class="lang-ja">地鶏と水、そして生揚げ醤油。<br>限られた素材だからこそ、<br>その力をまっすぐに<br>引き出します。</span>
+                        <span class="lang-en">Free-range chicken, water<br>and raw soy sauce.<br>With so few ingredients,<br>we draw out everything they have.</span>
+                    </p>
+                    <div class="ingredients-more">
+                        <span class="ingredients-rule" aria-hidden="true"></span>
+                        <p class="ingredients-body">
+                    <span class="lang-ja">京都、洛北の地から、鶏と水、そして生揚げ醤油だけで創り上げる「引き算の美学」を追求したらぁ麺をお届けしています。化学調味料に頼らず、素材本来の力を極限まで引き出した一杯。屋号「とうひち」には、地域に根ざし世代を超えて愛される存在でありたいという願いが込められています。</span>
+                    <span class="lang-en">From Rakuhoku, Kyoto, we pursue the "aesthetics of subtraction" — ramen made only from chicken, water, and unpasteurized soy sauce. No MSG, just the pure power of each ingredient.</span>
+                </p>
+                        <a href="#owner" class="line-link"><span class="lang-ja">店主について</span><span class="lang-en">About the owner</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-detail" id="craft">
+            <div class="container concept-grid">
+            <div class="concept-intro sp-only fade-in">
+                <p class="concept-body">
+                    <span class="lang-ja">京都、洛北の地から、鶏と水、そして生揚げ醤油だけで創り上げる「引き算の美学」を追求したらぁ麺をお届けしています。化学調味料に頼らず、素材本来の力を極限まで引き出した一杯。屋号「とうひち」には、地域に根ざし世代を超えて愛される存在でありたいという願いが込められています。</span>
+                    <span class="lang-en">From Rakuhoku, Kyoto, we pursue the "aesthetics of subtraction" — ramen made only from chicken, water, and unpasteurized soy sauce. No MSG, just the pure power of each ingredient.</span>
+                </p>
+                <a href="#owner" class="line-link"><span class="lang-ja">店主について</span><span class="lang-en">About the owner</span></a>
+            </div>
+
+            <ul class="craft-list fade-in">
+                <li class="craft-item">
+                    <div class="craft-img"><img src="craft-broth.webp" alt="" loading="lazy"></div>
+                    <h3 class="craft-name"><span class="lang-ja">地鶏</span><span class="lang-en">Chicken</span></h3>
+                    <span class="craft-en">BROTH</span>
+                    <p class="craft-text"><span class="lang-ja">地鶏のガラと丸鶏を<br>長時間炊き出した淡麗鶏清湯。</span><span class="lang-en">Clear broth slow-simmered from free-range chicken.</span></p>
+                </li>
+                <li class="craft-item">
+                    <div class="craft-img"><img src="craft-shoyu.webp" alt="" loading="lazy"></div>
+                    <h3 class="craft-name"><span class="lang-ja">醤油</span><span class="lang-en">Soy Sauce</span></h3>
+                    <span class="craft-en">SHOYU</span>
+                    <p class="craft-text"><span class="lang-ja">生揚げ醤油を用いた<br>自家製の醤油ダレ。</span><span class="lang-en">House-made tare with unpasteurized soy sauce.</span></p>
+                </li>
+                <li class="craft-item">
+                    <div class="craft-img"><img src="craft-noodle.webp" alt="" loading="lazy"></div>
+                    <h3 class="craft-name"><span class="lang-ja">麺</span><span class="lang-en">Noodles</span></h3>
+                    <span class="craft-en">NOODLES</span>
+                    <p class="craft-text"><span class="lang-ja">スープに寄り添う<br>自家製の細麺。</span><span class="lang-en">House-made thin noodles made for the broth.</span></p>
+                </li>
+                <li class="craft-item">
+                    <div class="craft-img"><img src="craft-natural.webp" alt="" loading="lazy"></div>
+                    <h3 class="craft-name"><span class="lang-ja">無化調</span><span class="lang-en">No MSG</span></h3>
+                    <span class="craft-en">NATURAL</span>
+                    <p class="craft-text"><span class="lang-ja">化学調味料に頼らず、<br>素材本来の力を引き出す。</span><span class="lang-en">No additives — only what the ingredients give.</span></p>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </section>
+
+    <!-- ===== 初めての方へ ===== -->
+    <section id="guide" class="sec guide-sec">
+        <div class="container">
+            <div class="sec-head-center fade-in">
+                <span class="eyebrow">First Visit</span>
+                <h2 class="sec-title"><span class="lang-ja">初めての方へ</span><span class="lang-en">Your First Visit</span></h2>
+            </div>
+
+            <ol class="guide-steps fade-in">
+                <li class="guide-step">
+                    <span class="guide-step-num">01</span>
+                    <span class="guide-step-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"><path d="M8 11h24v6a3 3 0 0 0 0 6v6H8v-6a3 3 0 0 0 0-6z"/><path d="M15 16h10M15 20h10M15 24h6"/></svg></span>
+                    <h3 class="guide-step-title"><span class="lang-ja">入店して食券を購入</span><span class="lang-en">Buy a meal ticket</span></h3>
+                    <p class="guide-step-text"><span class="lang-ja">まずは店内の券売機で食券をお買い求めください。お支払いは<strong>現金のみ</strong>です。</span><span class="lang-en">First, buy a ticket from the machine inside. <strong>Cash only.</strong></span></p>
+                </li>
+                <li class="guide-step">
+                    <span class="guide-step-num">02</span>
+                    <span class="guide-step-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="11" cy="13" r="3.2"/><circle cx="20" cy="13" r="3.2"/><circle cx="29" cy="13" r="3.2"/><path d="M6 28c0-4 2.3-7 5-7s5 3 5 7M15 28c0-4 2.3-7 5-7s5 3 5 7M24 28c0-4 2.3-7 5-7s5 3 5 7"/></svg></span>
+                    <h3 class="guide-step-title"><span class="lang-ja">列に並んでお待ちください</span><span class="lang-en">Wait in line</span></h3>
+                    <p class="guide-step-text"><span class="lang-ja">食券を購入したら、列に並んでお待ちください。<strong>代表者のみでのお並びはできません。</strong>お連れ様もご一緒にお並びください。</span><span class="lang-en">After buying your ticket, please join the line. <strong>No saving spots</strong> — everyone in your group must wait in line together.</span></p>
+                </li>
+                <li class="guide-step">
+                    <span class="guide-step-num">03</span>
+                    <span class="guide-step-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"><path d="M17 9h14v9H17z"/><path d="M21 13h6"/><path d="M6 27l6-5c1.5-1.2 3.4-1.4 5-.5l5 2.5h4a2 2 0 0 1 0 4h-7"/><path d="M6 33l5-3h10l9-6a2 2 0 0 1 2.5 3L23 34H10"/></svg></span>
+                    <h3 class="guide-step-title"><span class="lang-ja">スタッフが食券を受け取ります</span><span class="lang-en">We collect your ticket</span></h3>
+                    <p class="guide-step-text"><span class="lang-ja">順番が近づきましたら、スタッフが列まで食券を受け取りに伺います。それまでお手元でお持ちください。</span><span class="lang-en">A staff member will come to the line to collect your ticket. Please keep it with you until then.</span></p>
+                </li>
+                <li class="guide-step">
+                    <span class="guide-step-num">04</span>
+                    <span class="guide-step-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M6 19h28c0 7.5-6 12-14 12S6 26.5 6 19z"/><path d="M15 31v3h10v-3"/><path d="M15 8c1.5 2 1.5 4 0 6M20 7c1.5 2 1.5 4 0 6M25 8c1.5 2 1.5 4 0 6"/></svg></span>
+                    <h3 class="guide-step-title"><span class="lang-ja">お席へご案内</span><span class="lang-en">Take your seat</span></h3>
+                    <p class="guide-step-text"><span class="lang-ja">準備が整いましたらお席へご案内します。どうぞごゆっくりお楽しみください。</span><span class="lang-en">We will show you to your seat when ready. Enjoy your bowl.</span></p>
+                </li>
+            </ol>
+
+            <p class="guide-note fade-in">
+                <span class="guide-note-mark">!</span>
+                <span><span class="lang-ja">代表者のみでの順番待ちはご遠慮いただいております。必ず食券をご購入のうえ、全員でお並びください。</span><span class="lang-en">Please do not hold places for others. Buy your ticket first, and the whole group must wait in line together.</span></span>
+            </p>
+
+            <div class="guide-info fade-in">
+                <div class="guide-card">
+                    <p class="guide-card-label">Payment</p>
+                    <h3><span class="lang-ja">お支払い</span><span class="lang-en">Payment</span></h3>
+                    <p><span class="lang-ja">食券制・<strong>現金のみ</strong>です。クレジットカード・電子マネーはご利用いただけません。</span><span class="lang-en">Meal-ticket system, <strong>cash only</strong>. Cards and e-money are not accepted.</span></p>
+                </div>
+                <div class="guide-card">
+                    <p class="guide-card-label">Reservation</p>
+                    <h3><span class="lang-ja">ご予約</span><span class="lang-en">Reservations</span></h3>
+                    <p><span class="lang-ja">TableCheck にてご予約が可能な日もございます（別途料金がかかります）。</span><span class="lang-en">Reservations are available on some days via TableCheck (extra fee applies).</span></p>
+                    <a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener" class="guide-card-link"><span><span class="lang-ja">空席を確認する</span><span class="lang-en">Check availability</span></span><span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></a>
+                </div>
+                <div class="guide-card">
+                    <p class="guide-card-label">Parking</p>
+                    <h3><span class="lang-ja">駐車場</span><span class="lang-en">Parking</span></h3>
+                    <p><span class="lang-ja">専用駐車場は3台分。<strong>店舗から少し離れた場所</strong>にありますので、事前に地図をご確認ください。</span><span class="lang-en">3 dedicated spaces, <strong>a short walk from the shop</strong>. Please check the map before you come.</span></p>
+                    <a href="#access" class="guide-card-link"><span><span class="lang-ja">駐車場の地図を見る</span><span class="lang-en">See parking map</span></span><span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span></a>
+                </div>
+                <div class="guide-card">
+                    <p class="guide-card-label">With Kids</p>
+                    <h3><span class="lang-ja">お子さま連れ</span><span class="lang-en">With children</span></h3>
+                    <p><span class="lang-ja">お子さま連れも歓迎です。ベビーチェアやお子さま用の食器もご用意しています。</span><span class="lang-en">Children are welcome. Baby chairs and kids' tableware are available.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OWNER ===== -->
+    <section id="owner" class="owner-sec">
+        <div class="owner-photo">
+            <img src="taisho.webp" alt="店主 袖岡哲也" loading="lazy">
+            <p class="owner-vertical">
+                <span class="lang-ja">素材と向き合い、<br>丁寧に、まっすぐに。</span>
+                <span class="lang-en">Dedicated to ingredients,<br>honest and straightforward.</span>
+            </p>
+        </div>
+        <div class="owner-body fade-in">
+            <svg class="owner-branch" aria-hidden="true"><use href="#plum"/></svg>
+            <span class="eyebrow">Owner</span>
+            <h2 class="sec-title"><span class="lang-ja">店主紹介</span><span class="lang-en">The Owner</span></h2>
+            <p class="owner-name"><span class="lang-ja">袖岡 哲也</span><span class="lang-en">Tetsuya Sodeoka</span></p>
+            <p class="owner-role">OWNER — RAMEN TOUHICHI</p>
+            <p class="owner-text"><span class="lang-ja">京都市出身。幼少期からラーメンに魅せられ、京都の名店での修行を経て独立。「地鶏と醤油」というシンプルな構成ゆえに誤魔化しのきかない世界で、自身の理想とする味を追求し続けています。</span><span class="lang-en">Born in Kyoto City. Fascinated by ramen since childhood, trained at famous shops before opening his own. In a world where simplicity hides nothing, he pursues his ideal taste every day.</span></p>
+            <p class="owner-text"><span class="lang-ja">2015年3月に京都市北区にて開業。ミシュランガイド・ビブグルマンへの掲載、数々のラーメンアワードを受賞。2022年、更なる高みを目指して修学院へ移転。</span><span class="lang-en">Opened in Kita-ku, Kyoto in 2015. Listed in Michelin Guide Bib Gourmand, winner of multiple ramen awards. Relocated to Shugakuin in 2022.</span></p>
+        </div>
+    </section>
+
+    <!-- ===== NEWS ===== -->
+    <section id="news" class="sec news-sec">
+        <div class="container">
+            <div class="sec-head-center fade-in">
+                <span class="eyebrow">News</span>
+                <h2 class="sec-title"><span class="lang-ja">お知らせ</span><span class="lang-en">News</span></h2>
+            </div>
+            <div class="news-grid">
+            <ul class="news-list fade-in">
+                <li class="news-item">
+                    <a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener">
+                        <span class="news-date">Instagram</span>
+                        <span class="news-text"><span class="lang-ja">最新の限定メニュー・営業情報はInstagramで更新中</span><span class="lang-en">Latest limited menus &amp; hours on Instagram</span></span>
+                        <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                    </a>
+                </li>
+                <li class="news-item">
+                    <a href="https://www.ubereats.com/jp/store/%E3%82%89%E3%81%81%E9%BA%BA%E3%81%A8%E3%81%86%E3%81%B2%E3%81%A1-ramen-touhichi/gFrziDXRSLazd_5zzZtceg?srsltid=AfmBOopPqjAVd545d_-leLtUtuoTxLtb78Z5q93l569Qg_Hc0GkWtS6v" target="_blank" rel="noopener">
+                        <span class="news-date">Uber Eats</span>
+                        <span class="news-text"><span class="lang-ja">Uber Eatsでのデリバリーも承っております</span><span class="lang-en">Delivery available via Uber Eats</span></span>
+                        <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                    </a>
+                </li>
+                <li class="news-item">
+                    <a href="https://tousugu2020.thebase.in/" target="_blank" rel="noopener">
+                        <span class="news-date">Online Shop</span>
+                        <span class="news-text"><span class="lang-ja">お取り寄せラーメンを公式オンラインショップにて販売中</span><span class="lang-en">Frozen ramen available at our online shop</span></span>
+                        <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                    </a>
+                </li>
+            </ul>
+                <div class="news-insta fade-in">
+                    <p class="news-insta-head"><span class="lang-ja">最新情報はInstagramで</span><span class="lang-en">Latest updates on Instagram</span></p>
+                    <div class="insta-embed">
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/touhichi_/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+                            <a href="https://www.instagram.com/touhichi_/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noopener">@touhichi_ の投稿をInstagramで見る →</a>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="sec faq-sec">
+        <div class="container">
+            <div class="sec-head-center fade-in">
+                <span class="eyebrow">FAQ</span>
+                <h2 class="sec-title"><span class="lang-ja">よくある質問</span><span class="lang-en">FAQ</span></h2>
+            </div>
+            <div class="faq-list fade-in">
+                <div class="faq-item">
+                    <p class="faq-q"><span class="q-mark">Q</span><span><span class="lang-ja">予約はできますか？</span><span class="lang-en">Can I make a reservation?</span></span></p>
+                    <p class="faq-a"><span class="a-mark">A</span><span><span class="lang-ja">TableCheck（別途料金がかかります）にてご予約が可能な日もございます。空席状況は下記よりご確認ください。<br><a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener">TableCheck でご予約する　→</a></span><span class="lang-en">Yes, reservations are available on certain days via TableCheck.<br><a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener">Reserve via TableCheck　→</a></span></span></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q"><span class="q-mark">Q</span><span><span class="lang-ja">子ども連れでも利用できますか？</span><span class="lang-en">Is it child-friendly?</span></span></p>
+                    <p class="faq-a"><span class="a-mark">A</span><span><span class="lang-ja">はい、歓迎です。ベビーチェアやお子様用食器のご用意もございます。</span><span class="lang-en">Yes, welcome. Baby chairs and kids' utensils available.</span></span></p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-q"><span class="q-mark">Q</span><span><span class="lang-ja">支払方法を教えてください。</span><span class="lang-en">Payment methods?</span></span></p>
+                    <p class="faq-a"><span class="a-mark">A</span><span><span class="lang-ja">食券制となっており、<strong>現金支払いのみ</strong>となります。</span><span class="lang-en">Ticket machine system. <strong>Cash only.</strong></span></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ACCESS ===== -->
+    <section id="access" class="sec access-sec">
+        <div class="container">
+            <div class="sec-head-center fade-in">
+                <span class="eyebrow">Access</span>
+                <h2 class="sec-title"><span class="lang-ja">店舗案内</span><span class="lang-en">Access</span></h2>
+            </div>
+
+            <div class="access-photo-wrap fade-in">
+                <img src="gaiso.webp" alt="店舗外観" class="access-photo" loading="lazy">
+                <p class="access-lead">
+                    <span class="lang-ja">落ち着いた京都の空間で、<br>心を込めた一杯をお楽しみください。</span>
+                    <span class="lang-en">Enjoy a heartfelt bowl in<br>Kyoto's tranquil surroundings.</span>
+                </p>
+            </div>
+
+            <div class="access-grid fade-in">
+                <div>
+                    <ul class="access-info-list">
+                        <li class="access-info-row">
+                            <p class="access-label">Address</p>
+                            <p class="access-val"><span class="lang-ja">〒606-8007<br>京都市左京区山端壱町田町8-6<br>京福修学院マンション1F</span><span class="lang-en">8-6 Yamabana Itchoda-cho<br>Sakyo-ku, Kyoto</span></p>
+                        </li>
+                        <li class="access-info-row">
+                            <p class="access-label">Tel</p>
+                            <p class="access-val"><a href="tel:0757216556">075-721-6556</a></p>
+                        </li>
+                        <li class="access-info-row">
+                            <p class="access-label">Hours</p>
+                            <p class="access-val">11:00 – 14:30 (L.O.)<br>18:00 – 21:00 (L.O.)</p>
+                        </li>
+                        <li class="access-info-row">
+                            <p class="access-label">Closed</p>
+                            <p class="access-val"><span class="lang-ja">火曜日</span><span class="lang-en">Tuesday</span></p>
+                        </li>
+                        <li class="access-info-row">
+                            <p class="access-label">Parking</p>
+                            <p class="access-val"><span class="lang-ja">専用駐車場 3台<small>※店舗から少し離れた場所にございます</small></span><span class="lang-en">3 spots<small>A short walk from the shop</small></span></p>
+                        </li>
+                    </ul>
+                    <a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener" class="btn-red">
+                        <span class="lang-ja">ご予約はこちら</span><span class="lang-en">Reserve a Table</span>
+                    </a>
+                </div>
+                <div class="maps-wrap">
+                    <div>
+                        <p class="map-label"><span class="lang-ja">店舗の場所</span><span class="lang-en">Shop Location</span></p>
+                        <iframe class="map-frame" title="らぁ麺 とうひち 地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.268722291689!2d135.7914224!3d35.050020100000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6001a8104d0f0f93%3A0xb4280792666e9b78!2sRamen%20Touhichi!5e0!3m2!1sen!2sjp!4v1770112644919!5m2!1sen!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="parking-notice" id="parking">
+                        <div class="parking-notice-badge">P</div>
+                        <div>
+                            <p class="parking-notice-title"><span class="lang-ja">専用駐車場は店舗から離れた場所にあります</span><span class="lang-en">Parking lot is located away from the shop</span></p>
+                            <p class="parking-notice-text"><span class="lang-ja">当店の専用駐車場（3台）は、店舗から少し離れた場所にございます。下記マップをご確認の上、お間違えのないようご来店ください。</span><span class="lang-en">Our dedicated parking (3 spots) is a short walk from the shop. Please check the map below before visiting.</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="map-label"><span class="lang-ja">専用駐車場（3台） — 店舗とは別の場所です</span><span class="lang-en">Parking Lot (3 spots) — separate from the shop</span></p>
+                        <iframe class="map-frame" style="height:240px;" title="専用駐車場 地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3266.3113361853298!2d135.7917244!3d35.0489545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60010900610c131d%3A0x9b77618efa687244!2sRamentohichi%20Okyakusamasenyo%20Parking%20Lot!5e0!3m2!1sen!2sjp!4v1770173285135!5m2!1sen!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SNS ===== -->
+    <section id="sns" class="sec sns-sec">
+        <div class="container">
+            <div class="sec-head-center fade-in">
+                <span class="eyebrow">Information</span>
+                <h2 class="sec-title"><span class="lang-ja">お知らせ・各種リンク</span><span class="lang-en">Info &amp; Links</span></h2>
+            </div>
+            <div class="insta-feature fade-in">
+                <div class="insta-intro">
+                    <span class="eyebrow">Instagram</span>
+                    <p class="insta-handle"><a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener">@touhichi_</a></p>
+                    <p><span class="lang-ja">限定らぁ麺の告知や営業時間の変更は、Instagramでいち早くお知らせしています。</span><span class="lang-en">Limited bowls and changes to opening hours are announced first on Instagram.</span></p>
+                    <a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener" class="btn-red"><span class="lang-ja">フォローする</span><span class="lang-en">Follow us</span></a>
+                </div>
+                <div class="insta-embed">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/touhichi_/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+                        <a href="https://www.instagram.com/touhichi_/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank" rel="noopener">@touhichi_ の投稿をInstagramで見る →</a>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="sns-links fade-in">
+                <a href="https://www.instagram.com/touhichi_/?hl=ja" target="_blank" rel="noopener" class="sns-link">
+                    <span class="sns-link-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </span>
+                    <span class="sns-link-body">
+                        <span class="sns-link-name">Instagram</span>
+                        <span class="sns-link-sub"><span class="lang-ja">最新の限定メニュー・営業情報を随時更新中</span><span class="lang-en">Latest menus &amp; hours updated regularly</span></span>
+                    </span>
+                    <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                </a>
+                <a href="https://www.ubereats.com/jp/store/%E3%82%89%E3%81%81%E9%BA%BA%E3%81%A8%E3%81%86%E3%81%B2%E3%81%A1-ramen-touhichi/gFrziDXRSLazd_5zzZtceg?srsltid=AfmBOopPqjAVd545d_-leLtUtuoTxLtb78Z5q93l569Qg_Hc0GkWtS6v" target="_blank" rel="noopener" class="sns-link">
+                    <span class="sns-link-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 3v4h-5"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                    </span>
+                    <span class="sns-link-body">
+                        <span class="sns-link-name">Uber Eats</span>
+                        <span class="sns-link-sub"><span class="lang-ja">デリバリーはこちらからご注文ください</span><span class="lang-en">Order delivery online</span></span>
+                    </span>
+                    <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                </a>
+                <a href="https://tousugu2020.thebase.in/" target="_blank" rel="noopener" class="sns-link">
+                    <span class="sns-link-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </span>
+                    <span class="sns-link-body">
+                        <span class="sns-link-name"><span class="lang-ja">オンラインショップ</span><span class="lang-en">Online Shop</span></span>
+                        <span class="sns-link-sub"><span class="lang-ja">お取り寄せラーメンを公式ショップで販売中</span><span class="lang-en">Order our ramen online</span></span>
+                    </span>
+                    <span class="arrow-circle"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 7h12M8 2l5 5-5 5"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 図鑑バナー ===== -->
+    <section class="zukan-sec">
+        <div class="container zukan-inner fade-in">
+            <div>
+                <span class="eyebrow">Ramen Encyclopedia</span>
+                <h2 class="zukan-title">
+                    <span class="lang-ja">歴代限定らぁ麺を<br><em>図鑑</em>で振り返る</span>
+                    <span class="lang-en">Browse every<br><em>limited ramen</em> we've made</span>
+                </h2>
+                <p class="zukan-desc">
+                    <span class="lang-ja">開業以来つくり続けてきた、すべての限定らぁ麺を一覧で。いいねで人気投票もできます。</span>
+                    <span class="lang-en">Every limited bowl since we opened, all in one place. Vote for your favourite.</span>
+                </p>
+            </div>
+            <div class="zukan-photos" aria-hidden="true">
+                <img src="images/ramen3.webp" alt="" loading="lazy">
+                <img src="S__48496660_0.webp" alt="" loading="lazy">
+                <img src="shoyu-photo.webp" alt="" loading="lazy">
+            </div>
+            <div class="zukan-btn-wrap">
+                <a href="zukan.html" class="btn-red">
+                    <span class="lang-ja">らぁ麺図鑑を見る</span><span class="lang-en">View Encyclopedia</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <a href="#" class="footer-logo"><img src="logo-dark.webp" alt="らぁ麺 とうひち"></a>
+                <ul class="footer-nav">
+                    <li><a href="#menu"><span class="lang-ja">お品書き</span><span class="lang-en">Menu</span></a></li>
+                    <li><a href="#concept"><span class="lang-ja">こだわり</span><span class="lang-en">Concept</span></a></li>
+                    <li><a href="#guide"><span class="lang-ja">初めての方へ</span><span class="lang-en">First Visit</span></a></li>
+                    <li><a href="#faq"><span class="lang-ja">よくある質問</span><span class="lang-en">FAQ</span></a></li>
+                    <li><a href="#access"><span class="lang-ja">店舗案内</span><span class="lang-en">Access</span></a></li>
+                    <li><a href="zukan.html"><span class="lang-ja">らぁ麺図鑑</span><span class="lang-en">Encyclopedia</span></a></li>
+                </ul>
+                <div class="footer-actions">
+                    <a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener" class="btn-red"><span class="lang-ja">ご予約</span><span class="lang-en">Reserve</span></a>
+                    <a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener" class="footer-insta" aria-label="Instagram">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h4>Info</h4>
+                    <p><span class="lang-ja">〒606-8007<br>京都市左京区山端壱町田町8-6<br>京福修学院マンション1F</span><span class="lang-en">8-6 Yamabana Itchoda-cho<br>Sakyo-ku, Kyoto</span></p>
+                    <p><a href="tel:0757216556">075-721-6556</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Hours</h4>
+                    <p>11:00 – 14:30 (L.O.)<br>18:00 – 21:00 (L.O.)</p>
+                    <p><span class="lang-ja">定休日：火曜日</span><span class="lang-en">Closed: Tuesday</span></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://tousugu2020.thebase.in/" target="_blank" rel="noopener"><span class="lang-ja">オンラインショップ</span><span class="lang-en">Online Shop</span></a>
+                    <a href="zukan.html"><span class="lang-ja">らぁ麺図鑑</span><span class="lang-en">Encyclopedia</span></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-policy">
+                    <a href="#"><span class="lang-ja">プライバシーポリシー</span><span class="lang-en">Privacy Policy</span></a>
+                    <a href="#"><span class="lang-ja">特定商取引法に基づく表記</span><span class="lang-en">Legal Notice</span></a>
+                </div>
+                <p>© らぁ麺 とうひち　Ramen Touhichi, Kyoto</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== メニューモーダル ===== -->
+    <div class="menu-modal-overlay" id="menuModal" role="dialog" aria-modal="true">
+        <div class="menu-modal">
+            <button class="menu-modal-close" id="menuModalClose" aria-label="閉じる">✕</button>
+            <img class="menu-modal-img" id="menuModalImg" src="" alt="">
+            <div class="menu-modal-figure" id="menuModalFigure" hidden></div>
+            <div class="menu-modal-body">
+                <p class="menu-modal-name" id="menuModalName"></p>
+                <p class="menu-modal-desc" id="menuModalDesc"></p>
+                <div class="menu-modal-toppings" id="menuModalToppings" hidden>
+                    <p class="menu-modal-toppings-head"><span class="lang-ja">この一杯の具材</span><span class="lang-en">What's in the bowl</span></p>
+                    <ul id="menuModalToppingList"></ul>
+                </div>
+                <p class="menu-modal-price" id="menuModalPrice"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram 埋め込み用（公式） -->
+    <script async src="https://www.instagram.com/embed.js"></script>
+
+    <script>
+        // ヘッダー：スクロールで背景を付ける
+        const header = document.getElementById('header');
+        const onScrollHeader = () => header.classList.toggle('scrolled', window.scrollY > 40);
+        window.addEventListener('scroll', onScrollHeader, { passive: true });
+        onScrollHeader();
+
+        // ハンバーガー
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu   = document.getElementById('mobileMenu');
+
+        function setMenu(open) {
+            mobileMenu.classList.toggle('open', open);
+            hamburgerBtn.classList.toggle('open', open);
+            hamburgerBtn.setAttribute('aria-expanded', String(open));
+            header.classList.toggle('menu-open', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+        hamburgerBtn.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+        document.querySelectorAll('.mob-link').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+        // 言語切替（図鑑ページと設定を共有）
+        const LANG_KEY = 'touhichi_lang';
+        function applyLang(isEn) {
+            document.body.classList.toggle('english-mode', isEn);
+            document.documentElement.lang = isEn ? 'en' : 'ja';
+            const label = isEn ? '日本語' : 'English';
+            document.getElementById('langToggle').textContent = label;
+            document.getElementById('mobileLangToggle').textContent = label;
+        }
+        function toggleLang() {
+            const isEn = !document.body.classList.contains('english-mode');
+            applyLang(isEn);
+            try { localStorage.setItem(LANG_KEY, isEn ? 'en' : 'ja'); } catch (e) {}
+        }
+        document.getElementById('langToggle').addEventListener('click', toggleLang);
+        document.getElementById('mobileLangToggle').addEventListener('click', toggleLang);
+        try { if (localStorage.getItem(LANG_KEY) === 'en') applyLang(true); } catch (e) {}
+
+        // 全メニューの開閉
+        const menuToggleBtn = document.getElementById('menuToggleBtn');
+        const menuFull      = document.getElementById('menuFull');
+        const menuCloseBtn  = document.getElementById('menuCloseBtn');
+
+        function openFullMenu() {
+            menuFull.style.display = 'block';
+            menuToggleBtn.style.display = 'none';
+            menuFull.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        menuToggleBtn.addEventListener('click', openFullMenu);
+        document.getElementById('menuIntroLink').addEventListener('click', e => { e.preventDefault(); openFullMenu(); });
+        menuCloseBtn.addEventListener('click', () => {
+            menuFull.style.display = 'none';
+            menuToggleBtn.style.display = '';
+            document.getElementById('menu').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        function toggleMenuDesc(item) {
+            const open = item.classList.toggle('open');
+            const btn = item.querySelector('.menu-full-row');
+            if (btn) btn.setAttribute('aria-expanded', String(open));
+        }
+
+        // フェードイン
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // メニューモーダル
+        const menuModal      = document.getElementById('menuModal');
+        const menuModalImg   = document.getElementById('menuModalImg');
+        const menuModalName  = document.getElementById('menuModalName');
+        const menuModalDesc  = document.getElementById('menuModalDesc');
+        const menuModalPrice = document.getElementById('menuModalPrice');
+
+        // ============================================================
+        //  具材の説明図（写真の上に SVG でラベルと引き出し線を描く）
+        //  points は写真の左上を (0,0)、右下を (100,100) とした位置（%）
+        //  ラベルは左右に自動で振り分け、引き出し線が交差しないように並べ替える
+        //  新しいメニューは ANATOMY に追加し、カードに data-anatomy="キー" を付ける
+        // ============================================================
+        const TOPPING_LABELS = {
+            nori:         ['のり', 'Nori'],
+            chashu:       ['豚チャーシュー', 'Pork chashu'],
+            bara:         ['豚バラチャーシュー', 'Pork belly chashu'],
+            tori:         ['鶏チャーシュー', 'Chicken chashu'],
+            wonton:       ['ワンタン', 'Wonton'],
+            egg:          ['味玉', 'Marinated egg'],
+            negi:         ['九条ねぎ', 'Kujo green onion'],
+            shironegi:    ['白ねぎ', 'White scallion'],
+            onion:        ['玉ねぎ', 'Onion'],
+            menma:        ['メンマ', 'Menma'],
+            noodle:       ['自家製麺', 'House-made noodles'],
+            noodle_kombu: ['自家製麺（昆布水）', 'Noodles in kombu water'],
+            sheet:        ['一反木綿', 'Ittan-momen (noodle sheet)'],
+            tsukejiru:    ['つけ汁', 'Dipping broth'],
+            yakumi:       ['薬味', 'Condiments'],
+            soup_shoyu:   ['醤油スープ', 'Shoyu broth'],
+            soup_niboshi: ['煮干スープ', 'Niboshi broth'],
+            soup_paitan:  ['鶏白湯スープ', 'Chicken paitan broth']
+        };
+        // 右側のリストに出す順番（その一杯にあるものだけ表示）
+        const TOPPING_ORDER = ['soup', 'tsukejiru', 'noodle', 'noodle_kombu', 'sheet', 'chashu', 'bara', 'tori',
+                               'wonton', 'egg', 'menma', 'negi', 'shironegi', 'onion', 'nori', 'yakumi'];
+
+        const ANATOMY = {
+            tokushoyu: {
+                img: 'tokushoyu.webp', soup: 'soup_shoyu',
+                points: { nori: [22, 28], wonton: [31, 45], menma: [32, 63], bara: [43, 45], negi: [54, 45],
+                          chashu: [56, 32], egg: [73, 51], noodle: [74, 67], soup: [47, 71], tori: [53, 58] }
+            },
+            tokuniboshi: {
+                img: 'tokuniboshi.webp', soup: 'soup_niboshi',
+                points: { nori: [20, 30], wonton: [33, 37], menma: [41, 63], bara: [45, 43], negi: [55, 48],
+                          chashu: [58, 33], onion: [67, 48], egg: [74, 62], noodle: [60, 76], soup: [44, 74], tori: [50, 58] }
+            },
+            tokupaitan: {
+                img: 'tokupaitan.webp', soup: 'soup_paitan',
+                points: { nori: [25, 25], wonton: [33, 40], menma: [34, 63], bara: [44, 44], negi: [54, 42],
+                          chashu: [58, 32], shironegi: [56, 51], egg: [70, 61], noodle: [55, 74], soup: [42, 71], tori: [50, 60] }
+            },
+            tokutsuke: {
+                img: 'tokutsuke.webp',
+                points: { wonton: [29, 31], noodle_kombu: [70, 29], nori: [46, 37], tsukejiru: [18, 53], tori: [21, 62],
+                          chashu: [27, 56], egg: [44, 51], sheet: [74, 43], bara: [55, 46], yakumi: [72, 66] }
+            },
+            shoyu: {
+                img: 'shoyu.webp', soup: 'soup_shoyu',
+                points: { soup: [32, 43], menma: [35, 60], negi: [51, 50], chashu: [60, 38], tori: [71, 57], noodle: [52, 62] }
+            }
+        };
+
+        const SVG_NS = 'http://www.w3.org/2000/svg';
+        function svgEl(tag, attrs) {
+            const el = document.createElementNS(SVG_NS, tag);
+            Object.entries(attrs || {}).forEach(([k, v]) => el.setAttribute(k, v));
+            return el;
+        }
+        function toppingLabel(key, data, isEn) {
+            const k = key === 'soup' ? data.soup : key;
+            return TOPPING_LABELS[k][isEn ? 1 : 0];
+        }
+        // 2本の線分が交差しているか
+        function segmentsCross(a, b, c, d) {
+            const o = (p, q, r) => Math.sign((q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x));
+            return o(a, b, c) !== o(a, b, d) && o(c, d, a) !== o(c, d, b);
+        }
+
+        function renderAnatomy(figure, data, isEn, alt) {
+            figure.innerHTML = '';
+            const VB = { w: 1000, h: 720 };
+            const svg = svgEl('svg', { viewBox: `0 0 ${VB.w} ${VB.h}`, class: 'anatomy', role: 'img', 'aria-label': alt });
+            // 写真を中央に置き、左右をラベル用に空ける
+            const IMG = { x: 180, w: 640, h: 640 * 933 / 1400 };
+            IMG.y = (VB.h - IMG.h) / 2;
+            svg.appendChild(svgEl('image', { href: data.img, x: IMG.x, y: IMG.y, width: IMG.w, height: IMG.h }));
+            // 白い線・点をベージュの上でも見えるよう、ごく薄い影を付ける
+            const defs = svgEl('defs');
+            const filter = svgEl('filter', { id: 'anatomySoft', x: '-20%', y: '-20%', width: '140%', height: '140%' });
+            filter.appendChild(svgEl('feDropShadow', { dx: 0, dy: 0, stdDeviation: 1.4, 'flood-color': '#2b1f17', 'flood-opacity': 0.35 }));
+            defs.appendChild(filter);
+            // 写真の部分だけ白い線にするためのマスク（写真の透明部分は茶色の細線が見える）
+            const mask = svgEl('mask', { id: 'anatomyPhotoMask', maskUnits: 'userSpaceOnUse', x: 0, y: 0, width: VB.w, height: VB.h, style: 'mask-type: alpha' });
+            mask.appendChild(svgEl('image', { href: data.img, x: IMG.x, y: IMG.y, width: IMG.w, height: IMG.h }));
+            defs.appendChild(mask);
+            svg.appendChild(defs);
+            figure.appendChild(svg);
+
+            // 各具材の点とラベル（文字幅を測るため先に描画）
+            const items = Object.entries(data.points).map(([key, [px, py]]) => {
+                const g = svgEl('g', { class: 'anatomy-label' });
+                const text = svgEl('text', {});
+                text.textContent = toppingLabel(key, data, isEn);
+                g.appendChild(text);
+                svg.appendChild(g);
+                return { key, g, text, len: text.getComputedTextLength() || 120,
+                         dot: { x: IMG.x + IMG.w * px / 100, y: IMG.y + IMG.h * py / 100 } };
+            });
+
+            // 写真の左側にある具材は左、右側は右に振り分ける（数はなるべく半々）
+            items.sort((a, b) => a.dot.x - b.dot.x);
+            const half = Math.ceil(items.length / 2);
+            const sides = { l: items.slice(0, half), r: items.slice(half) };
+
+            Object.entries(sides).forEach(([side, list]) => {
+                // 縦方向に等間隔の枠を用意し、まず上から順に割り当てる
+                list.sort((a, b) => a.dot.y - b.dot.y);
+                const step = Math.min(124, 600 / Math.max(1, list.length - 1));
+                const span = step * (list.length - 1);
+                const top = Math.max(60, VB.h / 2 - span / 2);
+                list.forEach((it, i) => {
+                    it.side = side;
+                    it.y = top + i * step;
+                    it.anchorX = side === 'l' ? Math.max(170, 24 + it.len + 14) : Math.min(830, VB.w - 24 - it.len - 14);
+                });
+                // 引き出し線が交差していたら入れ替える（交差がなくなるまで）
+                const seg = it => [{ x: it.anchorX, y: it.y + 14 }, it.dot];
+                for (let pass = 0, swapped = true; swapped && pass < 60; pass++) {
+                    swapped = false;
+                    for (let i = 0; i < list.length; i++) {
+                        for (let j = i + 1; j < list.length; j++) {
+                            const [a1, a2] = seg(list[i]);
+                            const [b1, b2] = seg(list[j]);
+                            if (segmentsCross(a1, a2, b1, b2)) {
+                                [list[i].y, list[j].y] = [list[j].y, list[i].y];
+                                swapped = true;
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 描画
+            items.sort((a, b) => a.y - b.y).forEach((it, i) => {
+                const underY = it.y + 14;
+                let x1, x2;
+                if (it.side === 'l') {
+                    it.text.setAttribute('x', 24);
+                    x1 = 20; x2 = it.anchorX;
+                } else {
+                    it.text.setAttribute('x', VB.w - 24);
+                    it.text.setAttribute('text-anchor', 'end');
+                    x1 = it.anchorX; x2 = VB.w - 20;
+                }
+                it.text.setAttribute('y', it.y);
+                it.g.style.animationDelay = `${0.15 + i * 0.05}s`;
+                it.g.appendChild(svgEl('line', { x1, y1: underY, x2, y2: underY, class: 'anatomy-under' }));
+                const leader = { x1: it.anchorX, y1: underY, x2: it.dot.x, y2: it.dot.y };
+                it.g.appendChild(svgEl('line', { ...leader, class: 'anatomy-leader-out' }));
+                const onPhoto = svgEl('g', { mask: 'url(#anatomyPhotoMask)' });
+                onPhoto.appendChild(svgEl('line', { ...leader, class: 'anatomy-leader', filter: 'url(#anatomySoft)' }));
+                it.g.appendChild(onPhoto);
+                it.g.appendChild(svgEl('circle', { cx: it.dot.x, cy: it.dot.y, r: 9, class: 'anatomy-halo' }));
+                it.g.appendChild(svgEl('circle', { cx: it.dot.x, cy: it.dot.y, r: 4, class: 'anatomy-dot', filter: 'url(#anatomySoft)' }));
+            });
+        }
+
+        function openMenuModal(card) {
+            const isEn = document.body.classList.contains('english-mode');
+            const name = isEn ? card.dataset.nameEn : card.dataset.nameJa;
+            const desc = isEn ? card.dataset.descEn : card.dataset.descJa;
+            const tag  = isEn ? card.dataset.tagEn  : card.dataset.tagJa;
+
+            // 具材の説明図があるメニューは図とリストを表示
+            const data = ANATOMY[card.dataset.anatomy];
+            const figure = document.getElementById('menuModalFigure');
+            const toppingsBox  = document.getElementById('menuModalToppings');
+            const toppingsList = document.getElementById('menuModalToppingList');
+            menuModal.classList.toggle('is-anatomy', !!data);
+            menuModalImg.src = card.dataset.src;
+            menuModalImg.alt = name;
+            menuModalImg.hidden = !!data;
+            figure.hidden = !data;
+            toppingsBox.hidden = !data;
+            toppingsList.innerHTML = '';
+            if (data) {
+                renderAnatomy(figure, data, isEn, name);
+                const keys = Object.keys(data.points);
+                TOPPING_ORDER.filter(k => keys.includes(k)).forEach(key => {
+                    const li = document.createElement('li');
+                    li.textContent = toppingLabel(key, data, isEn);
+                    toppingsList.appendChild(li);
+                });
+            }
+            menuModalName.textContent = name;
+            menuModalDesc.textContent = desc;
+            menuModalPrice.textContent = card.dataset.price;
+            if (tag) {
+                const t = document.createElement('span');
+                t.className = 'menu-modal-tag';
+                t.textContent = tag;
+                menuModalPrice.appendChild(t);
+            }
+            menuModal.classList.add('open');
+            menuModal.querySelector('.menu-modal').scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenuModal() {
+            menuModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.querySelectorAll('.menu-card').forEach(card => card.addEventListener('click', () => openMenuModal(card)));
+        document.getElementById('menuModalClose').addEventListener('click', closeMenuModal);
+        menuModal.addEventListener('click', e => { if (e.target === menuModal) closeMenuModal(); });
+
+        // 写真ライトボックス（全メニュー内の写真）
+        const photoLightbox = document.createElement('div');
+        photoLightbox.id = 'photoLightbox';
+        const photoLightboxImg = document.createElement('img');
+        photoLightbox.appendChild(photoLightboxImg);
+        document.body.appendChild(photoLightbox);
+
+        function closePhotoLightbox() {
+            photoLightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        photoLightbox.addEventListener('click', closePhotoLightbox);
+        document.querySelectorAll('.menu-desc-photo').forEach(photo => {
+            const row = photo.closest('.menu-list-item');
+            if (row && row.dataset.anatomy) {
+                photo.classList.add('has-anatomy');
+            }
+            photo.setAttribute('role', 'button');
+            photo.setAttribute('tabindex', '0');
+            photo.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); photo.click(); }
+            });
+            photo.addEventListener('click', e => {
+                e.stopPropagation();
+                if (row && row.dataset.anatomy) { openMenuModal(row); return; }
+                const img = photo.querySelector('img');
+                photoLightboxImg.src = img.src;
+                photoLightboxImg.alt = img.alt;
+                photoLightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Escape') return;
+            closeMenuModal();
+            closePhotoLightbox();
+            setMenu(false);
+        });
+
+        // ヒーロー写真をゆっくり動かす（パララックス）
+        (function () {
+            const layers = document.querySelectorAll('.hero-bg, .hero-bowl-cut');
+            if (!layers.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    if (y < window.innerHeight * 1.2) layers.forEach(el => el.style.transform = `translateY(${y * 0.08}px)`);
+                    ticking = false;
+                });
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>

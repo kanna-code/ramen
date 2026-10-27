@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>らぁ麺図鑑 - らぁ麺 とうひち</title>
+    <meta name="description" content="らぁ麺とうひちが週替わり・季節限定で提供してきた限定らぁ麺の記録。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           TOKENS（トップページと共通）
+        ============================================================ */
+        :root {
+            --paper: #fbf8f3;
+            --bg: #f5efe6;
+            --beige: #ece2d3;
+            --beige-deep: #d9c7ad;
+            --ink: #1d1814;
+            --ink-soft: #3a2f27;
+            --brown: #6b4a33;
+            --brown-dark: #2b1f17;
+            --red: #8e1b1b;
+            --red-deep: #6e1212;
+            --muted: #7a6a5a;
+            --line: rgba(58, 40, 25, 0.16);
+            --serif: 'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+            --latin: 'Cormorant Garamond', 'Shippori Mincho', serif;
+            --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0 0.15 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--serif);
+            background: var(--bg) var(--noise);
+            color: var(--ink);
+            line-height: 1.9;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        button { font-family: inherit; }
+        [hidden] { display: none !important; }
+
+        .lang-en { display: none; }
+        body.english-mode .lang-ja { display: none; }
+        body.english-mode .lang-en { display: revert; }
+
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px); }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .fade-in { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* ============================================================
+           HEADER
+        ============================================================ */
+        #header {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 900;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 0 clamp(16px, 3vw, 40px);
+            background: rgba(251, 248, 243, 0.94);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 0 var(--line);
+        }
+        .header-logo img { height: clamp(44px, 5vw, 54px); width: auto; }
+        .header-right { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); }
+        .back-link {
+            font-size: 0.82rem;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            color: var(--ink);
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+        .back-link:hover { color: var(--red); }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--line);
+            color: var(--ink);
+            font-family: var(--latin);
+            font-size: 0.86rem;
+            letter-spacing: 0.12em;
+            padding: 3px 2px;
+            cursor: pointer;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .lang-btn:hover { color: var(--red); border-color: var(--red); }
+        .btn-red {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--red);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            padding: 11px 22px;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+        .btn-red::after { content: ''; width: 24px; height: 1px; background: currentColor; }
+        .btn-red:hover { background: var(--red-deep); }
+        @media (max-width: 639px) {
+            .btn-red { display: none; }
+            .back-link .long { display: none; }
+        }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        .zk-hero {
+            position: relative;
+            padding: 150px 0 70px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .zk-hero::before {
+            content: 'ARCHIVE';
+            position: absolute;
+            left: 50%;
+            top: 82px;
+            transform: translateX(-50%);
+            font-family: var(--latin);
+            font-size: clamp(5rem, 16vw, 14rem);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            color: rgba(107, 74, 51, 0.08);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        .zk-eyebrow {
+            position: relative;
+            display: block;
+            font-family: var(--latin);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        .zk-title {
+            position: relative;
+            font-size: clamp(2rem, 4.4vw, 3.2rem);
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            line-height: 1.5;
+        }
+        .zk-title::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 36px;
+            background: var(--red);
+            margin: 22px auto 0;
+        }
+        .zk-lead {
+            position: relative;
+            max-width: 560px;
+            margin: 24px auto 0;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            line-height: 2.1;
+            color: var(--ink-soft);
+        }
+        .zk-count {
+            position: relative;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-top: 26px;
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+        }
+        .zk-count strong {
+            font-family: var(--latin);
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--red);
+            line-height: 1;
+        }
+
+        /* ============================================================
+           TOOLBAR（検索・絞り込み・並び替え）
+        ============================================================ */
+        .zk-toolbar {
+            position: sticky;
+            top: 72px;
+            z-index: 50;
+            background: rgba(245, 239, 230, 0.95);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            padding: 14px 0;
+        }
+        .zk-toolbar-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 20px;
+        }
+        .search-wrap {
+            position: relative;
+            flex: 0 1 280px;
+            min-width: 200px;
+        }
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            pointer-events: none;
+        }
+        .search-input {
+            width: 100%;
+            height: 42px;
+            padding: 0 38px 0 40px;
+            border: 1px solid var(--line);
+            background: #fff;
+            font-family: var(--serif);
+            font-size: 0.86rem;
+            letter-spacing: 0.04em;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .search-input:focus { border-color: var(--red); }
+        .search-clear {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 26px;
+            height: 26px;
+            border: none;
+            background: none;
+            color: var(--muted);
+            cursor: pointer;
+            display: none;
+        }
+        .search-clear.show { display: block; }
+
+        .filter-bar {
+            flex: 1 1 auto;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .filter-bar::-webkit-scrollbar { display: none; }
+        .filter-btn {
+            flex-shrink: 0;
+            height: 36px;
+            padding: 0 16px;
+            border: 1px solid var(--line);
+            background: transparent;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            color: var(--ink-soft);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .filter-btn:hover { border-color: var(--red); color: var(--red); }
+        .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+
+        .sort-bar { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+        .sort-label { font-size: 0.74rem; letter-spacing: 0.12em; color: var(--muted); margin-right: 6px; }
+        .sort-btn {
+            border: none;
+            background: none;
+            padding: 6px 8px;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+        }
+        .sort-btn.active { color: var(--ink); border-bottom-color: var(--red); }
+
+        @media (max-width: 799px) {
+            .zk-toolbar { position: static; padding: 12px 0; }  /* スマホでは画面を占領しないよう固定しない */
+            .search-wrap { flex: 1 1 100%; }
+            .filter-bar { flex: 1 1 100%; margin: 0 calc(-1 * clamp(20px, 5vw, 56px)); padding: 0 clamp(20px, 5vw, 56px); }
+            .sort-bar { margin-left: 0; }
+        }
+
+        /* ============================================================
+           GRID / CARD
+        ============================================================ */
+        .zk-main { padding: 48px 0 110px; }
+        .zukan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: clamp(18px, 2.4vw, 32px);
+        }
+        .zukan-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: var(--paper);
+            box-shadow: 0 1px 0 var(--line);
+            transition: transform 0.35s, box-shadow 0.35s;
+        }
+        .zukan-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(90, 55, 25, 0.12); }
+        .zukan-card.top1 { box-shadow: 0 0 0 1.5px var(--red); }
+
+        .zukan-card-photo {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background: var(--beige);
+            cursor: zoom-in;
+            border: none;
+            padding: 0;
+            width: 100%;
+        }
+        .zukan-card-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .zukan-card:hover .zukan-card-photo img { transform: scale(1.05); }
+        .zukan-card-photo.no-photo::after {
+            content: 'No Photo';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--latin);
+            letter-spacing: 0.3em;
+            color: var(--beige-deep);
+        }
+        .zukan-card-tags {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            right: 64px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+        .zukan-card-tag:nth-child(n+2) { background: rgba(43, 31, 23, 0.82); }
+        .zukan-card-tag {
+            background: var(--red);
+            color: #fff;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            padding: 2px 10px;
+        }
+        .rank-badge {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            color: #fff;
+            background: var(--brown);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+        }
+        .rank-badge.show { display: flex; }
+        .rank-badge.r1 { background: var(--red); }
+        .rank-badge.r2 { background: var(--brown); }
+        .rank-badge.r3 { background: #9b7a55; }
+        .rank-badge .rn { font-family: var(--latin); font-size: 1.15rem; font-weight: 600; }
+        .rank-badge .rl { font-size: 0.56rem; letter-spacing: 0.06em; margin-top: 2px; }
+
+        .zukan-card-body { display: flex; flex-direction: column; flex: 1; padding: 18px 20px 16px; }
+        .zukan-card-period {
+            font-family: var(--latin);
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            color: var(--red);
+            margin-bottom: 4px;
+        }
+        .zukan-card-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .zukan-card-soup {
+            font-size: 0.8rem;
+            line-height: 1.9;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+        .zukan-card-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--line);
+        }
+        .zukan-card-price { font-family: var(--latin); font-size: 1.05rem; font-weight: 500; letter-spacing: 0.04em; }
+        .card-actions { display: flex; align-items: center; gap: 6px; }
+        .detail-btn {
+            border: none;
+            background: none;
+            font-size: 0.76rem;
+            letter-spacing: 0.1em;
+            color: var(--ink-soft);
+            cursor: pointer;
+            padding: 6px 4px;
+            border-bottom: 1px solid var(--line);
+            transition: color 0.25s, border-color 0.25s;
+        }
+        .detail-btn:hover { color: var(--red); border-color: var(--red); }
+
+        .like-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            height: 34px;
+            padding: 0 12px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: #fff;
+            font-family: var(--latin);
+            font-size: 0.9rem;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .like-btn:hover { border-color: var(--red); color: var(--red); }
+        .like-btn.liked { background: var(--red); border-color: var(--red); color: #fff; }
+        .like-heart { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; }
+        .like-btn.liked .like-heart { fill: currentColor; }
+        .like-heart.pop { animation: pop 0.4s ease; }
+        @keyframes pop { 0% { transform: scale(1); } 40% { transform: scale(1.4); } 100% { transform: scale(1); } }
+
+        .zukan-status {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 0;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        .zk-note {
+            margin-top: 56px;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+        }
+        .zk-note a { color: var(--red); }
+
+        /* ============================================================
+           MODAL
+        ============================================================ */
+        .zukan-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(29, 24, 20, 0.6);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s, visibility 0.35s;
+        }
+        .zukan-modal.open { opacity: 1; visibility: visible; }
+        .zukan-modal-inner {
+            position: relative;
+            width: min(920px, 100%);
+            max-height: 90svh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            background: var(--paper) var(--noise);
+            transform: translateY(16px);
+            transition: transform 0.35s;
+        }
+        .zukan-modal.open .zukan-modal-inner { transform: none; }
+        .zukan-modal-photo { background: var(--beige); min-height: 300px; }
+        .zukan-modal-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .zukan-modal-body { padding: 40px 36px 34px; display: flex; flex-direction: column; }
+        .zukan-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .zukan-modal-close:hover { color: var(--red); border-color: var(--red); }
+        .zukan-modal-period { font-family: var(--latin); font-size: 0.86rem; letter-spacing: 0.16em; color: var(--red); }
+        .zukan-modal-tags { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: 10px; vertical-align: 2px; }
+        .zukan-modal-tag:nth-child(n+2) { background: var(--brown); }
+        .zukan-modal-tag {
+            display: inline-block;
+            font-family: var(--serif);
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            color: #fff;
+            background: var(--red);
+            padding: 1px 8px;
+            vertical-align: 2px;
+        }
+        .zukan-modal-name { font-size: 1.5rem; font-weight: 500; letter-spacing: 0.12em; line-height: 1.6; margin: 6px 0 10px; }
+        .zukan-modal-price { font-family: var(--latin); font-size: 1.4rem; font-weight: 500; color: var(--red); }
+        .zukan-modal-divider { height: 1px; background: var(--line); margin: 20px 0; }
+        .zukan-modal-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            color: var(--brown);
+            margin-bottom: 4px;
+        }
+        .zukan-modal-label::before { content: ''; width: 6px; height: 6px; background: var(--red); transform: rotate(45deg); }
+        .zukan-modal-text { font-size: 0.88rem; line-height: 2; letter-spacing: 0.04em; color: var(--ink-soft); margin-bottom: 16px; white-space: pre-line; }
+        .zukan-modal-foot { margin-top: auto; padding-top: 10px; display: flex; justify-content: flex-end; }
+        @media (max-width: 719px) {
+            .zukan-modal { align-items: flex-end; padding: 0; }
+            .zukan-modal-inner { grid-template-columns: 1fr; max-height: 92svh; }
+            .zukan-modal-photo { min-height: 0; aspect-ratio: 4 / 3; }
+            .zukan-modal-body { padding: 26px 22px 30px; }
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        .zk-footer {
+            background: var(--paper) var(--noise);
+            border-top: 1px solid var(--line);
+            padding: 40px 0 28px;
+        }
+        .zk-footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+        .zk-footer img { height: 46px; width: auto; }
+        .zk-footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; }
+        .zk-footer-links a { font-size: 0.8rem; letter-spacing: 0.12em; text-decoration: none; color: var(--ink-soft); }
+        .zk-footer-links a:hover { color: var(--red); }
+        .zk-copy { width: 100%; font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted); padding-top: 18px; border-top: 1px solid var(--line); }
+
+        /* かたちの調整（トップページと統一：ピル型ボタン・角丸カード） */
+        .btn-red { border-radius: 999px; box-shadow: 0 6px 16px rgba(142, 27, 27, 0.18); }
+        .btn-red::after { width: 16px; height: 16px; background: none; border-radius: 50%; border: 1px solid rgba(255,255,255,0.7);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='white' stroke-width='1.4'%3E%3Cpath d='M3 7h8M7.5 3.5L11 7l-3.5 3.5'/%3E%3C/svg%3E");
+            background-size: 9px; background-position: center; background-repeat: no-repeat; }
+        .search-input { border-radius: 4px; }
+        .filter-btn { border-radius: 999px; }
+        .zukan-card { border-radius: 6px; overflow: hidden; box-shadow: 0 8px 22px rgba(90, 55, 25, 0.06); }
+        .zukan-card.top1 { box-shadow: 0 0 0 1.5px var(--red), 0 8px 22px rgba(90, 55, 25, 0.08); }
+        .zukan-card-tag, .zukan-modal-tag { border-radius: 2px; }
+        .zukan-modal-inner { border-radius: 8px; }
+        .zukan-modal-close { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        @media (max-width: 719px) { .zukan-modal-inner { border-radius: 8px 8px 0 0; } }
+
+        /* 囲みを減らす：カードの背景・影をやめ、写真と文字だけで見せる */
+        .btn-red { box-shadow: inset 0 0 0 3px var(--red), inset 0 0 0 4px rgba(255,255,255,0.75); transition: opacity 0.3s; }
+        .btn-red:hover { background: var(--red); opacity: 0.82; }
+        .back-link:hover, .lang-btn:hover, .detail-btn:hover, .sort-btn:hover { color: inherit; opacity: 0.55; }
+        .back-link, .lang-btn, .detail-btn, .sort-btn { transition: opacity 0.3s; }
+        .zukan-card { background: none; box-shadow: none; border-radius: 0; overflow: visible; }
+        .zukan-card:hover { transform: none; box-shadow: none; }
+        .zukan-card-photo { border-radius: 2px; }
+        .zukan-card:hover .zukan-card-photo img { transform: none; opacity: 0.85; }
+        .zukan-card-photo img { transition: opacity 0.3s; }
+        .zukan-card-body { padding: 16px 2px 10px; }
+        .zukan-card.top1 { box-shadow: none; }
+        .zukan-card.top1 .zukan-card-photo { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3px var(--red); }
+        .filter-btn { border-radius: 999px; }
+        .filter-btn:hover { border-color: var(--line); color: inherit; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <a href="index.html" class="header-logo" aria-label="らぁ麺 とうひち トップへ">
+            <img src="logo-dark.webp" alt="らぁ麺 とうひち">
+        </a>
+        <div class="header-right">
+            <a href="index.html" class="back-link">← <span class="lang-ja">トップ<span class="long">ページ</span>へ</span><span class="lang-en">Home</span></a>
+            <button class="lang-btn" id="langToggle">English</button>
+            <a href="https://www.tablecheck.com/ja/shops/touhichi/reserve" target="_blank" rel="noopener" class="btn-red"><span class="lang-ja">ご予約</span><span class="lang-en">Reserve</span></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section class="zk-hero">
+            <div class="container">
+                <span class="zk-eyebrow">Ramen Encyclopedia</span>
+                <h1 class="zk-title"><span class="lang-ja">らぁ麺図鑑</span><span class="lang-en">Ramen Encyclopedia</span></h1>
+                <p class="zk-lead">
+                    <span class="lang-ja">週替わり・季節限定で提供してきた一杯の記録。<br>それぞれの出会いと旨みを、ここに残します。</span>
+                    <span class="lang-en">A record of every weekly and seasonal limited bowl we have served — each encounter and flavour, kept here.</span>
+                </p>
+                <p class="zk-count" id="zukanCount" hidden>
+                    <span class="lang-ja">これまでの限定</span><span class="lang-en">Limited bowls so far</span>
+                    <strong id="zukanCountNum">0</strong>
+                    <span class="lang-ja">杯</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- ===== TOOLBAR ===== -->
+        <div class="zk-toolbar">
+            <div class="container zk-toolbar-inner">
+                <div class="search-wrap">
+                    <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input class="search-input" id="zukanSearch" type="search" placeholder="らぁ麺名・スープで検索…" autocomplete="off" aria-label="検索">
+                    <button class="search-clear" id="searchClear" aria-label="クリア / Clear">✕</button>
+                </div>
+                <div class="filter-bar" role="group" aria-label="絞り込み">
+                    <button class="filter-btn active" data-filter="all"><span class="lang-ja">すべて</span><span class="lang-en">All</span></button>
+                    <button class="filter-btn" data-filter="醤油"><span class="lang-ja">醤油</span><span class="lang-en">Shoyu</span></button>
+                    <button class="filter-btn" data-filter="塩"><span class="lang-ja">塩</span><span class="lang-en">Shio</span></button>
+                    <button class="filter-btn" data-filter="煮干"><span class="lang-ja">煮干</span><span class="lang-en">Niboshi</span></button>
+                    <button class="filter-btn" data-filter="冷やし"><span class="lang-ja">冷やし</span><span class="lang-en">Chilled</span></button>
+                    <button class="filter-btn" data-filter="まぜそば"><span class="lang-ja">まぜそば</span><span class="lang-en">Mazesoba</span></button>
+                    <button class="filter-btn" data-filter="つけ麺"><span class="lang-ja">つけ麺</span><span class="lang-en">Tsukemen</span></button>
+                    <button class="filter-btn" data-filter="その他"><span class="lang-ja">その他</span><span class="lang-en">Others</span></button>
+                </div>
+                <div class="sort-bar">
+                    <span class="sort-label"><span class="lang-ja">並び替え</span><span class="lang-en">Sort</span></span>
+                    <button class="sort-btn active" data-sort="newest"><span class="lang-ja">新しい順</span><span class="lang-en">Newest</span></button>
+                    <button class="sort-btn" data-sort="likes"><span class="lang-ja">人気順</span><span class="lang-en">Most liked</span></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== GRID ===== -->
+        <section class="zk-main">
+            <div class="container">
+                <div class="zukan-grid" id="zukanGrid">
+                    <p class="zukan-status" id="zukanStatus"><span class="lang-ja">読み込み中…</span><span class="lang-en">Loading…</span></p>
+                </div>
+                <p class="zukan-status" id="zukanEmpty" hidden><span class="lang-ja">該当するらぁ麺が見つかりませんでした。</span><span class="lang-en">No ramen matched your search.</span></p>
+                <p class="zk-note">
+                    <span class="lang-ja">最新の限定らぁ麺は <a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener">Instagram</a> でお知らせしています。</span>
+                    <span class="lang-en">Our latest limited bowls are announced on <a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener">Instagram</a>.</span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== MODAL ===== -->
+    <div class="zukan-modal" id="zukanModal" role="dialog" aria-modal="true">
+        <div class="zukan-modal-inner">
+            <button class="zukan-modal-close" id="modalClose" aria-label="閉じる / Close">✕</button>
+            <div class="zukan-modal-photo"><img id="modalPhoto" src="" alt=""></div>
+            <div class="zukan-modal-body">
+                <p><span class="zukan-modal-period" id="modalPeriod"></span><span class="zukan-modal-tags" id="modalTag" hidden></span></p>
+                <h2 class="zukan-modal-name" id="modalName"></h2>
+                <p class="zukan-modal-price" id="modalPrice"></p>
+                <div class="zukan-modal-divider"></div>
+                <p class="zukan-modal-label"><span class="lang-ja">スープ</span><span class="lang-en">Soup</span></p>
+                <p class="zukan-modal-text" id="modalSoup"></p>
+                <p class="zukan-modal-label"><span class="lang-ja">麺・トッピング</span><span class="lang-en">Noodles &amp; Toppings</span></p>
+                <p class="zukan-modal-text" id="modalNoodle"></p>
+                <div class="zukan-modal-foot" id="modalLikeWrap"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="zk-footer">
+        <div class="container zk-footer-inner">
+            <a href="index.html"><img src="logo-dark.webp" alt="らぁ麺 とうひち"></a>
+            <ul class="zk-footer-links">
+                <li><a href="index.html#menu"><span class="lang-ja">お品書き</span><span class="lang-en">Menu</span></a></li>
+                <li><a href="index.html#guide"><span class="lang-ja">初めての方へ</span><span class="lang-en">First Visit</span></a></li>
+                <li><a href="index.html#access"><span class="lang-ja">店舗案内</span><span class="lang-en">Access</span></a></li>
+                <li><a href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener">Instagram</a></li>
+            </ul>
+            <p class="zk-copy">© らぁ麺 とうひち　Ramen Touhichi, Kyoto</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        //  設定
+        // ============================================================
+        // 限定らぁ麺の一覧：Google スプレッドシートを「ウェブに公開（CSV）」した URL
+        // 列: ID | 提供時期 | 名前 | 価格 | タグ | フィルター | 写真ファイル名 | スープ説明 | 麺・トッピング
+        const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPBloT2IWIwTwncTZZxpiBj-aHSMfJVlHi1Zmr_G74lWHEmRcL4yhJ6v2j2QgTICGnfKw-c_M-XBdd/pub?gid=0&single=true&output=csv';
+
+        // いいねの集計：Google Apps Script（likes-apps-script.gs）を「ウェブアプリ」として公開した URL
+        // 空のままだと、いいねはその人のブラウザ内だけに保存されます
+        const LIKES_API_URL = '';
+
+        // スプレッドシートが読めない時（オフラインでの確認など）に表示する登録データ
+        // ※ 通常はスプレッドシートの内容が優先されます
+        const FALLBACK_ITEMS = [
+            { id: '1', period: '2026年5月', name: '特製 地鶏豚骨魚介らぁ麺', price: '1,500', tag: '夜限定,限定15食', filter: '煮干', photo: 'ramen1.jpg',
+              soup: '地鶏と豚骨の白湯スープに煮干節スープをブレンド。魚粉・魚オイルの粒子と仕上げの炭オイルが特徴。',
+              noodle: '中細ストレート麺。特製チャーシュー、メンマ、味玉' },
+            { id: '2', period: '2026年5月', name: '京都左京 Neo classic ラーメン 熟成鶏豚骨醤油', price: '1,300', tag: '昼夜限定,限定15食', filter: '醤油', photo: 'ramen2.jpg',
+              soup: '熟成させた鶏豚骨スープをベースに、京都風の醤油ダレを合わせたクラシックスタイル。',
+              noodle: '細ストレート麺。チャーシュー、九条ねぎ' },
+            { id: '3', period: '2026年5月', name: '伊吹銀付イリコらぁ麺', price: '1,300', tag: '昼夜限定,限定15食', filter: '煮干', photo: 'ramen3.jpg',
+              soup: '伊吹産の銀付きいりこ（煮干）だけで取った透き通った金色のスープ。雑味のない純粋な煮干の旨味。',
+              noodle: '細ストレート麺。シンプルな麺のみの盛り付け' },
+            { id: '4', period: '2026年5月', name: '限定 地鶏豚骨魚介つけそば（元祖またおま系）', price: '1,500', tag: '昼夜限定,限定15食', filter: 'つけ麺', photo: 'ramen4.jpg',
+              soup: '地鶏と豚骨の旨味に魚介をブレンドした濃厚つけ汁。元祖またおま系スタイル。',
+              noodle: '太縮れ麺。チャーシュー、メンマ、魚粉' },
+            { id: '5', period: '2025年3月', name: '鶏豚骨醤油手打式つけめん', price: '', tag: '昼夜限定,11周年', filter: 'つけ麺', photo: 'ramen5.jpg',
+              soup: '周年より炊き続けてきた鶏豚骨スープに田上家さんの家系カエシを合わせた濃厚つけスープ',
+              noodle: '手打ち式太麺。チャーシュー・ほうれん草・メンマ・海苔' },
+            { id: '6', period: '2025年3月', name: '限定 生姜醤油らぁ麺', price: '', tag: '昼夜限定,限定15食', filter: '醤油', photo: 'ramen6.jpg',
+              soup: '地鶏・豚骨に野菜と大量の叩き生姜をじっくり煮込み、醤油カエシと仕上げ油にも生姜を効かせた長岡ご当地スタイル',
+              noodle: '多加水ストレート麺を軽く手揉みして茹でる。豚チャーシュー3枚・なると・メンマ・海苔' }
+        ];
+
+        // ============================================================
+        //  共通
+        // ============================================================
+        const $ = id => document.getElementById(id);
+        const isEn = () => document.body.classList.contains('english-mode');
+        const store = {
+            get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } },
+            set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+        };
+        function esc(s) {
+            return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
+
+        // 言語切替（トップページと設定を共有）
+        const LANG_KEY = 'touhichi_lang';
+        function applyLang(en) {
+            document.body.classList.toggle('english-mode', en);
+            document.documentElement.lang = en ? 'en' : 'ja';
+            $('langToggle').textContent = en ? '日本語' : 'English';
+            $('zukanSearch').placeholder = en ? 'Search by name or soup…' : 'らぁ麺名・スープで検索…';
+        }
+        $('langToggle').addEventListener('click', () => {
+            const en = !isEn();
+            applyLang(en);
+            try { localStorage.setItem(LANG_KEY, en ? 'en' : 'ja'); } catch (e) {}
+            renderRanks();
+        });
+        try { if (localStorage.getItem(LANG_KEY) === 'en') applyLang(true); } catch (e) {}
+
+        // フェードイン
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.06 });
+
+        // ============================================================
+        //  いいね（全員分の集計 / 未設定時はブラウザ内のみ）
+        // ============================================================
+        const LIKED_KEY = 'touhichi_zukan_liked';      // 自分が押したかどうか
+        const LOCAL_COUNT_KEY = 'touhichi_zukan_likes'; // API 未設定時の件数
+        let liked = store.get(LIKED_KEY, {});
+        let likes = LIKES_API_URL ? {} : store.get(LOCAL_COUNT_KEY, {});
+
+        async function loadLikes() {
+            if (!LIKES_API_URL) return;
+            try {
+                const res = await fetch(LIKES_API_URL, { cache: 'no-store' });
+                const data = await res.json();
+                if (data && typeof data === 'object') likes = data;
+                refreshAllLikeButtons();
+                applyView();
+            } catch (e) { console.warn('いいね数を取得できませんでした', e); }
+        }
+
+        async function sendLike(id, delta) {
+            if (!LIKES_API_URL) { store.set(LOCAL_COUNT_KEY, likes); return; }
+            try {
+                // text/plain にするとブラウザの事前確認（CORS プリフライト）が不要になる
+                const res = await fetch(LIKES_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ id, delta })
+                });
+                const data = await res.json();
+                if (data && typeof data.count === 'number') {
+                    likes[id] = data.count;
+                    refreshLikeButtons(id);
+                }
+            } catch (e) { console.warn('いいねを送信できませんでした', e); }
+        }
+
+        function toggleLike(id) {
+            const was = !!liked[id];
+            liked[id] = !was;
+            if (!liked[id]) delete liked[id];
+            likes[id] = Math.max(0, (likes[id] || 0) + (was ? -1 : 1));
+            store.set(LIKED_KEY, liked);
+            refreshLikeButtons(id, !was);
+            sendLike(id, was ? -1 : 1);
+            if (currentSort === 'likes') applyView();
+            else renderRanks();
+        }
+
+        function likeButtonHTML(id) {
+            return `<button class="like-btn" data-like="${esc(id)}" aria-label="いいね / Like">
+                        <svg class="like-heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C12 21 3 13.5 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-9 13-9 13z"/></svg>
+                        <span class="like-count">0</span>
+                    </button>`;
+        }
+        function paintLikeButton(btn, id, pop) {
+            btn.querySelector('.like-count').textContent = likes[id] || 0;
+            btn.classList.toggle('liked', !!liked[id]);
+            if (pop) {
+                const heart = btn.querySelector('.like-heart');
+                heart.classList.remove('pop'); void heart.offsetWidth; heart.classList.add('pop');
+            }
+        }
+        function refreshLikeButtons(id, pop) {
+            document.querySelectorAll(`.like-btn[data-like="${CSS.escape(id)}"]`).forEach(b => paintLikeButton(b, id, pop));
+        }
+        function refreshAllLikeButtons() {
+            document.querySelectorAll('.like-btn').forEach(b => paintLikeButton(b, b.dataset.like));
+        }
+        document.addEventListener('click', e => {
+            const btn = e.target.closest('.like-btn');
+            if (btn) { e.stopPropagation(); toggleLike(btn.dataset.like); }
+        });
+
+        // ============================================================
+        //  データ読み込み
+        // ============================================================
+        let items = [];
+        let currentSort = 'newest';
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function parseCSV(text) {
+            const rows = [];
+            let row = [], field = '', inQuote = false;
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                if (inQuote) {
+                    if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else inQuote = false; }
+                    else field += c;
+                } else if (c === '"') inQuote = true;
+                else if (c === ',') { row.push(field); field = ''; }
+                else if (c === '\n') { row.push(field); if (row.some(f => f)) rows.push(row); row = []; field = ''; }
+                else if (c !== '\r') field += c;
+            }
+            row.push(field); if (row.some(f => f)) rows.push(row);
+            return rows;
+        }
+        function parsePeriod(p) {
+            const m = String(p).match(/(\d{4})\D+(\d{1,2})/);
+            return m ? parseInt(m[1], 10) * 100 + parseInt(m[2], 10) : 0;
+        }
+
+        // 1件分のデータを表示用に整える
+        function normalize(raw) {
+            const t = s => String(s || '').trim();
+            let price = t(raw.price);
+            if (!price || /要記入|未定|^-$/.test(price)) price = '';           // 未入力の価格は表示しない
+            else if (/^[\d,]+$/.test(price)) price = '¥' + price;            // 「1,500」→「¥1,500」
+            const name = t(raw.name);
+            let filter = t(raw.filter) || 'その他';
+            if (filter === 'その他' && /つけ/.test(name)) filter = 'つけ麺'; // つけ麺・つけそばは「つけ麺」に
+            const photo = t(raw.photo);
+            return {
+                id: t(raw.id), period: t(raw.period), name, price, filter,
+                tags: t(raw.tag).split(/[,、，]/).map(s => s.trim()).filter(Boolean),
+                photo: photo ? (photo.includes('/') ? photo : 'images/' + photo) : '',
+                soup: t(raw.soup), noodle: t(raw.noodle)
+            };
+        }
+
+        async function load() {
+            let list = null;
+            try {
+                const res = await fetch(SHEET_URL);
+                if (!res.ok) throw new Error(res.status);
+                const rows = parseCSV(await res.text()).slice(1); // 1行目は見出し
+                list = rows.map(r => {
+                    const [id, period, name, price, tag, filter, photo, soup, noodle] = r;
+                    return { id, period, name, price, tag, filter, photo, soup, noodle };
+                });
+            } catch (err) {
+                console.warn('スプレッドシートを読み込めなかったため、登録データを表示します', err);
+                list = FALLBACK_ITEMS;
+            }
+            items = list.map(normalize).filter(it => it.id && it.name);
+            $('zukanStatus').remove();
+            $('zukanCountNum').textContent = items.length;
+            $('zukanCount').hidden = false;
+            renderCards();
+            loadLikes();
+        }
+
+        // ============================================================
+        //  カード
+        // ============================================================
+        function renderCards() {
+            const grid = $('zukanGrid');
+            grid.innerHTML = '';
+            items.forEach(it => {
+                const card = document.createElement('article');
+                card.className = 'zukan-card fade-in';
+                card.dataset.id = it.id;
+                card.innerHTML = `
+                    <button class="zukan-card-photo${it.photo ? '' : ' no-photo'}" data-open aria-label="${esc(it.name)}">
+                        ${it.photo ? `<img src="${esc(it.photo)}" alt="" loading="lazy">` : ''}
+                        ${it.tags.length ? `<span class="zukan-card-tags">${it.tags.map(t => `<span class="zukan-card-tag">${esc(t)}</span>`).join('')}</span>` : ''}
+                        <span class="rank-badge"></span>
+                    </button>
+                    <div class="zukan-card-body">
+                        <p class="zukan-card-period">${esc(it.period)}</p>
+                        <h2 class="zukan-card-name">${esc(it.name)}</h2>
+                        ${it.soup ? `<p class="zukan-card-soup">${esc(it.soup)}</p>` : ''}
+                        <div class="zukan-card-foot">
+                            <span class="zukan-card-price">${esc(it.price)}</span>
+                            <span class="card-actions">
+                                <button class="detail-btn" data-open><span class="lang-ja">詳しく</span><span class="lang-en">Details</span></button>
+                                ${likeButtonHTML(it.id)}
+                            </span>
+                        </div>
+                    </div>`;
+                card.querySelectorAll('[data-open]').forEach(el => el.addEventListener('click', () => openModal(it)));
+                const img = card.querySelector('img');
+                if (img) img.addEventListener('error', () => { img.remove(); card.querySelector('.zukan-card-photo').classList.add('no-photo'); });
+                it.el = card;
+                grid.appendChild(card);
+                io.observe(card);
+            });
+            refreshAllLikeButtons();
+            applyView();
+        }
+
+        function applyView() {
+            if (!items.length) return;
+            const grid = $('zukanGrid');
+            const q = currentSearch.toLowerCase();
+            const sorted = [...items].sort((a, b) =>
+                currentSort === 'likes'
+                    ? (likes[b.id] || 0) - (likes[a.id] || 0) || parsePeriod(b.period) - parsePeriod(a.period)
+                    : parsePeriod(b.period) - parsePeriod(a.period));
+            let visible = 0;
+            sorted.forEach(it => {
+                const show = (currentFilter === 'all' || it.filter === currentFilter) &&
+                    (!q || [it.name, it.soup, it.noodle, it.tags.join(' ')].some(s => (s || '').toLowerCase().includes(q)));
+                it.el.hidden = !show;
+                if (show) visible++;
+                grid.appendChild(it.el);
+            });
+            $('zukanEmpty').hidden = visible > 0;
+            renderRanks();
+        }
+
+        // 人気上位3つにバッジ（いいねが1以上のもの）
+        function renderRanks() {
+            if (!items.length) return;
+            const ranked = [...items].filter(it => (likes[it.id] || 0) > 0)
+                .sort((a, b) => (likes[b.id] || 0) - (likes[a.id] || 0)).slice(0, 3);
+            items.forEach(it => {
+                const badge = it.el.querySelector('.rank-badge');
+                const r = ranked.indexOf(it);
+                badge.className = 'rank-badge' + (r >= 0 ? ` show r${r + 1}` : '');
+                badge.innerHTML = r >= 0 ? `<span class="rn">${r + 1}</span><span class="rl">${isEn() ? ['st', 'nd', 'rd'][r] : '位'}</span>` : '';
+                it.el.classList.toggle('top1', r === 0);
+            });
+        }
+
+        // 検索・絞り込み・並び替え
+        const searchInput = $('zukanSearch');
+        searchInput.addEventListener('input', () => {
+            currentSearch = searchInput.value.trim();
+            $('searchClear').classList.toggle('show', !!currentSearch);
+            applyView();
+        });
+        $('searchClear').addEventListener('click', () => {
+            searchInput.value = ''; currentSearch = '';
+            $('searchClear').classList.remove('show');
+            searchInput.focus(); applyView();
+        });
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            applyView();
+        }));
+        document.querySelectorAll('.sort-btn').forEach(btn => btn.addEventListener('click', () => {
+            document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSort = btn.dataset.sort;
+            applyView();
+        }));
+
+        // ============================================================
+        //  モーダル
+        // ============================================================
+        const modal = $('zukanModal');
+        function openModal(it) {
+            const photo = $('modalPhoto');
+            photo.src = it.photo || '';
+            photo.alt = it.name;
+            photo.parentElement.hidden = !it.photo;
+            $('modalPeriod').textContent = it.period;
+            $('modalTag').innerHTML = it.tags.map(t => `<span class="zukan-modal-tag">${esc(t)}</span>`).join('');
+            $('modalTag').hidden = !it.tags.length;
+            $('modalName').textContent = it.name;
+            $('modalPrice').textContent = it.price;
+            $('modalPrice').hidden = !it.price;
+            $('modalSoup').textContent = it.soup || '—';
+            $('modalNoodle').textContent = it.noodle || '—';
+            $('modalLikeWrap').innerHTML = likeButtonHTML(it.id);
+            refreshLikeButtons(it.id);
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        $('modalClose').addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        load();
+    </script>
+</body>
+</html>
