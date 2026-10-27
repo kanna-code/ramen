@@ -2421,6 +2421,299 @@
 
         /* --- 写真付きの小物は角を戻す --- */
         .menu-desc-photo { border-radius: 0; }
+
+        /* ============================================================
+           定休日（火曜日）のお知らせ
+        ============================================================ */
+        .holiday-notice {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            max-width: 560px;
+            margin-bottom: 30px;
+            padding: 14px 18px;
+            background: rgba(255, 252, 247, 0.94);
+            border-top: 3px double rgba(142, 27, 27, 0.55);
+            border-bottom: 3px double rgba(142, 27, 27, 0.55);
+            color: var(--ink);
+            text-decoration: none;
+            text-shadow: none;
+            box-shadow: 0 10px 24px rgba(90, 55, 25, 0.1);
+            transition: opacity 0.3s;
+        }
+        .holiday-notice:hover { opacity: 0.8; }
+        .holiday-notice-badge {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--red);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            box-shadow: inset 0 0 0 2px var(--red), inset 0 0 0 3px rgba(255, 255, 255, 0.7);
+        }
+        .holiday-notice-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+        .holiday-notice-title { font-size: 1.05rem; font-weight: 600; letter-spacing: 0.1em; color: var(--red); }
+        .holiday-notice-text { font-size: 0.8rem; line-height: 1.75; letter-spacing: 0.04em; color: var(--ink-soft); }
+        .holiday-notice-link {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--latin);
+            font-size: 0.86rem;
+            letter-spacing: 0.08em;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
+        }
+        .holiday-notice-link svg { width: 12px; height: 12px; }
+        @media (max-width: 899px) {
+            .holiday-notice { order: -1; margin: 0 0 22px; padding: 12px 14px; gap: 12px; max-width: none; }
+            .holiday-notice-badge { width: 44px; height: 44px; font-size: 0.74rem; }
+            .holiday-notice-title { font-size: 0.98rem; }
+            .holiday-notice-text { font-size: 0.8rem; }
+            .holiday-notice-link { display: none; }
+        }
+
+        /* ============================================================
+           「AIっぽさ」を減らす調整（編集デザイン寄りに）
+           1. 見出し：中央揃え＋英字＋赤い縦線の繰り返しをやめ、
+              左揃えの見出し＋漢数字の章番号（壱・弐・参…）＋下罫線に
+           2. 丸で囲んだ矢印をやめ、細い矢印だけに
+           3. スクロールで浮き上がる動きを控えめに（ふわっと出るだけ）
+           4. 来店ガイドの手順：アイコンの丸と点線をやめ、番号で見せる
+        ============================================================ */
+        @counter-style touhichi-kanji {
+            system: fixed;
+            symbols: "壱" "弐" "参" "肆" "伍" "陸" "漆" "捌";
+            suffix: "";
+        }
+        main { counter-reset: sec; }
+        #menu, #concept, #guide, #owner, #news, #faq, #access, #sns { counter-increment: sec; }
+
+        /* --- 1. 見出し --- */
+        .sec-head-center {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            align-items: end;
+            column-gap: clamp(14px, 2vw, 24px);
+            text-align: left;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--ink);
+            margin-bottom: clamp(36px, 5vw, 56px);
+        }
+        .sec-head-center::after { display: none; }
+        .sec-head-center::before {
+            content: counter(sec, touhichi-kanji);
+            grid-column: 1;
+            grid-row: 1;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            line-height: 0.9;
+            color: var(--red);
+            font-weight: 500;
+        }
+        .sec-head-center .sec-title { grid-column: 2; grid-row: 1; line-height: 1.3; }
+        .sec-head-center .eyebrow {
+            grid-column: 3;
+            grid-row: 1;
+            margin: 0 0 4px;
+            font-size: 0.7rem;
+            letter-spacing: 0.24em;
+            color: var(--muted);
+        }
+
+        /* お品書き */
+        .menu-intro { text-align: left; }
+        .menu-intro > div {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            align-items: end;
+            column-gap: clamp(14px, 2vw, 24px);
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--ink);
+            margin-bottom: 18px;
+        }
+        .menu-intro > div::before {
+            content: counter(sec, touhichi-kanji);
+            grid-column: 1; grid-row: 1;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            line-height: 0.9;
+            color: var(--red);
+        }
+        .menu-intro .sec-title { grid-column: 2; grid-row: 1; margin: 0; line-height: 1.3; }
+        .menu-intro .sec-title::after { display: none; }
+        .menu-intro .eyebrow { grid-column: 3; grid-row: 1; margin: 0 0 4px; font-size: 0.7rem; letter-spacing: 0.24em; color: var(--muted); }
+        .menu-intro p { margin-bottom: 14px; }
+
+        /* 素材（ビジュアル内の小見出しに章番号） */
+        .ingredients-eyebrow::before {
+            content: counter(sec, touhichi-kanji);
+            display: block;
+            font-size: 2.6rem;
+            line-height: 1;
+            letter-spacing: 0;
+            color: var(--red);
+            margin-bottom: 10px;
+            font-family: var(--serif);
+        }
+
+        /* 店主紹介 */
+        .owner-body .eyebrow::before {
+            content: counter(sec, touhichi-kanji);
+            display: block;
+            font-family: var(--serif);
+            font-size: 2.6rem;
+            line-height: 1;
+            letter-spacing: 0;
+            color: var(--red);
+            margin-bottom: 10px;
+            text-transform: none;
+        }
+
+        /* --- 2. 丸い矢印をやめて細い矢印に --- */
+        .arrow-circle {
+            width: auto !important;
+            height: auto !important;
+            border: none !important;
+            border-radius: 0;
+            background: none !important;
+        }
+        .arrow-circle svg { width: 18px; height: 18px; }
+        .menu-card:hover .arrow-circle, .seasonal:hover .arrow-circle { background: none; transform: translateX(4px); }
+        .arrow-circle { transition: transform 0.3s; }
+        .seasonal .arrow-circle { color: #fff; }
+        .btn-red::after { border: none; width: 14px; height: 14px; background-size: 14px; }
+        .menu-more-btn::after, .menu-close-btn::after { border: none; width: 18px; height: 18px; background-size: 16px; }
+
+        /* --- 3. 動きは控えめに --- */
+        .fade-in { transform: none; transition: opacity 0.9s ease; }
+
+        /* --- 4. 来店ガイドの手順 --- */
+        .guide-steps::before { display: none; }
+        .guide-step {
+            text-align: left;
+            padding: 18px 0 0;
+            border-top: 1px solid var(--ink);
+        }
+        .guide-step-num {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+        .guide-step-icon {
+            width: auto;
+            height: auto;
+            margin: 0 0 12px;
+            background: none;
+            border: none;
+            box-shadow: none;
+            justify-content: flex-start;
+        }
+        .guide-step-icon svg { width: 34px; height: 34px; }
+        .guide-step-icon svg * { stroke-width: 1.4; }
+        @media (max-width: 799px) {
+            .guide-step {
+                grid-template-columns: 64px 1fr;
+                grid-template-areas: "num title" "num text";
+                padding: 18px 0 22px;
+            }
+            .guide-step-icon { display: none; }
+            .guide-step-num { grid-area: num; margin: 0; font-size: 2.2rem; }
+        }
+
+        @media (max-width: 599px) {
+            .sec-head-center, .menu-intro > div { grid-template-columns: auto minmax(0, 1fr); row-gap: 4px; }
+            .sec-head-center .eyebrow, .menu-intro .eyebrow { grid-column: 2; grid-row: 2; }
+        }
+
+        /* 章番号（漢数字）は表示しない */
+        .sec-head-center::before,
+        .menu-intro > div::before,
+        .ingredients-eyebrow::before,
+        .owner-body .eyebrow::before { content: none; display: none; }
+        .sec-head-center, .menu-intro > div { grid-template-columns: minmax(0, 1fr) auto; }
+        .sec-head-center .sec-title, .menu-intro .sec-title { grid-column: 1; }
+        .sec-head-center .eyebrow, .menu-intro .eyebrow { grid-column: 2; }
+        @media (max-width: 599px) {
+            .sec-head-center, .menu-intro > div { grid-template-columns: minmax(0, 1fr); }
+            .sec-head-center .eyebrow, .menu-intro .eyebrow { grid-column: 1; grid-row: 2; }
+        }
+
+        /* 定休日のお知らせ：ヒーローの右上に */
+        .hero > .holiday-notice {
+            position: absolute;
+            top: 96px;
+            right: clamp(16px, 3vw, 40px);
+            z-index: 6;
+            max-width: 400px;
+            margin: 0;
+        }
+        @media (max-width: 899px) {
+            .hero > .holiday-notice {
+                position: relative;
+                top: auto;
+                right: auto;
+                align-self: flex-end;
+                margin: 0 16px 18px auto;
+                max-width: calc(100% - 32px);
+                padding: 10px 12px;
+            }
+        }
+
+        /* 特製 鶏醤油らぁ麺：具材の説明が見られることを伝える TAP マーク */
+        .tap-badge {
+            position: absolute;
+            top: 4%;
+            right: 2%;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px 6px 10px;
+            border-radius: 999px;
+            background: var(--red);
+            color: #fff;
+            box-shadow: inset 0 0 0 2px var(--red), inset 0 0 0 3px rgba(255, 255, 255, 0.7), 0 6px 14px rgba(142, 27, 27, 0.25);
+            font-size: 0.7rem;
+            line-height: 1;
+            pointer-events: none;
+            animation: tapPulse 2.4s ease-in-out infinite;
+        }
+        .tap-badge svg { width: 16px; height: 16px; }
+        .tap-badge-text { font-family: var(--latin); font-size: 0.86rem; font-weight: 600; letter-spacing: 0.16em; }
+        .tap-badge-sub { letter-spacing: 0.08em; padding-left: 6px; border-left: 1px solid rgba(255, 255, 255, 0.5); }
+        @keyframes tapPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+        .menu-card:hover .tap-badge { animation-play-state: paused; }
+        @media (prefers-reduced-motion: reduce) { .tap-badge { animation: none; } }
+        @media (max-width: 699px) {
+            .tap-badge { top: 2%; right: 0; padding: 5px 10px 5px 8px; }
+        }
+
+        /* TAP マークは控えめに：白地に細い枠、動きなし */
+        .tap-badge {
+            background: rgba(255, 252, 247, 0.9);
+            color: var(--red);
+            box-shadow: 0 0 0 1px rgba(142, 27, 27, 0.35);
+            padding: 4px 10px 4px 8px;
+            gap: 5px;
+            font-size: 0.64rem;
+            animation: none;
+        }
+        .tap-badge svg { width: 13px; height: 13px; }
+        .tap-badge-text { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; }
+        .tap-badge-sub { color: var(--ink-soft); border-left-color: rgba(142, 27, 27, 0.3); padding-left: 5px; }
     </style>
 </head>
 <body>
@@ -2507,6 +2800,16 @@
             <div class="hero-word">TOUHICHI</div>
         </div>
 
+        <!-- 火曜日（定休日）だけ表示するお知らせ。表示の切り替えはページ下部のスクリプト -->
+            <a class="holiday-notice" id="holidayNotice" href="https://www.instagram.com/touhichi_/" target="_blank" rel="noopener" hidden>
+                <span class="holiday-notice-badge"><span class="lang-ja">本日</span><span class="lang-en">Today</span></span>
+                <span class="holiday-notice-body">
+                    <strong class="holiday-notice-title"><span class="lang-ja">本日は定休日です</span><span class="lang-en">We are closed today (Tuesday)</span></strong>
+                    <span class="holiday-notice-text"><span class="lang-ja">※火曜日でも営業する場合があります。最新の営業情報は Instagram をご確認ください。</span><span class="lang-en">We may open on some Tuesdays. Please check Instagram for the latest hours.</span></span>
+                </span>
+                <span class="holiday-notice-link">Instagram<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5"/></svg></span>
+            </a>
+
         <div class="hero-text">
             <h1 class="hero-title">
                 <span class="lang-ja">日常に、<br>少し<em>特別</em>な一杯。</span>
@@ -2589,7 +2892,7 @@
                          data-desc-ja="炙り豚バラチャーシュー、ワンタン、味玉を添えた至高の一杯。鶏の旨みを引き出した淡麗スープが、特製トッピングと見事に調和します。"
                          data-desc-en="Our signature bowl topped with roasted pork belly chashu, wontons, and a marinated egg. The delicate chicken broth harmonizes beautifully with each premium topping."
                          data-price="¥1,700">
-                        <span class="menu-card-photo"><img src="tokushoyu.webp" alt="" loading="lazy"></span>
+                        <span class="menu-card-photo"><span class="tap-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V9a1.5 1.5 0 0 1 3 0v2"/><path d="M15 10.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-.6a6 6 0 0 1-4.6-2.2L4.5 16a1.5 1.5 0 0 1 2.3-1.9L9 16V11"/></svg><span class="tap-badge-text">TAP</span><span class="tap-badge-sub"><span class="lang-ja">具材を見る</span><span class="lang-en">See toppings</span></span></span><img src="tokushoyu.webp" alt="" loading="lazy"></span>
                         <span class="menu-card-label"><span class="lang-ja">一番人気</span><span class="lang-en">Signature</span></span>
                         <span class="menu-card-foot">
                             <span class="menu-card-name"><span class="lang-ja">特製<br>鶏醤油らぁ麺</span><span class="lang-en">Special<br>Chicken Shoyu</span></span>
@@ -3265,6 +3568,19 @@
     <script async src="https://www.instagram.com/embed.js"></script>
 
     <script>
+
+        // ============================================================
+        //  火曜日（日本時間）は「本日は定休日です」を表示
+        //  確認用：URL の末尾に ?tuesday=1 を付けると曜日に関係なく表示
+        // ============================================================
+        (function () {
+            const notice = document.getElementById('holidayNotice');
+            if (!notice) return;
+            const weekday = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Tokyo', weekday: 'short' }).format(new Date());
+            const forced = new URLSearchParams(location.search).get('tuesday') === '1';
+            if (weekday === 'Tue' || forced) notice.hidden = false;
+        })();
+
         // ヘッダー：スクロールで背景を付ける
         const header = document.getElementById('header');
         const onScrollHeader = () => header.classList.toggle('scrolled', window.scrollY > 40);
