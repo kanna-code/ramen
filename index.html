@@ -2714,6 +2714,182 @@
         .tap-badge svg { width: 13px; height: 13px; }
         .tap-badge-text { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; }
         .tap-badge-sub { color: var(--ink-soft); border-left-color: rgba(142, 27, 27, 0.3); padding-left: 5px; }
+
+        /* ============================================================
+           モバイル最適化（線を減らし、余白で区切る）
+           ※ スマホからのアクセスが中心になる想定
+        ============================================================ */
+        @media (max-width: 699px) {
+            /* 共通：セクションの余白を少し詰め、見出しの下線はなくす */
+            .sec { padding: 64px 0; }
+            .sec-head-center,
+            .menu-intro > div { border-bottom: none; padding-bottom: 0; margin-bottom: 28px; }
+            .sec-head-center .sec-title, .menu-intro .sec-title { font-size: 1.7rem; }
+
+            /* ヒーロー：どんぶりに重なる SCROLL は非表示 */
+            .hero .hero-scroll { display: none !important; }
+
+            /* ご来店の前に：区切り線なしで4つを1列に */
+            .quick-band { padding: 32px 0 36px; border-bottom: none; }
+            .quick-links-head { font-size: 0.98rem; margin-bottom: 6px; }
+            .quick-links ul { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 4px; }
+            .quick-links li + li { border-left: none; }
+            .quick-link { padding: 4px 0; gap: 8px; }
+            .quick-link-icon { width: 54px; height: 54px; }
+            .quick-link-label { font-size: 0.74rem; letter-spacing: 0; line-height: 1.35; }
+
+            /* お品書き：重複する「お品書きを見る」リンクは下のボタンに任せる */
+            #menuIntroLink { display: none; }
+            .menu-intro p { margin-bottom: 0; }
+            .menu-card.is-featured { border-bottom: none; padding-bottom: 8px; }
+            .menu-card-row { border-top: none; padding-top: 4px; }
+            .is-featured .menu-card-row { border-top: 1px solid var(--line); padding-top: 12px; }
+
+            /* 他の3品は「写真＋文字」の横並びリストに（空白のマスをなくす） */
+            .menu-cards { grid-template-columns: 1fr; row-gap: 22px; }
+            .menu-card:not(.is-featured) {
+                display: grid;
+                grid-template-columns: 42% minmax(0, 1fr);
+                grid-template-areas: "photo label" "photo foot";
+                grid-template-rows: auto 1fr;
+                column-gap: 14px;
+                align-items: center;
+            }
+            .menu-card:not(.is-featured) .menu-card-photo { grid-area: photo; margin: 0; aspect-ratio: 4 / 3; }
+            .menu-card:not(.is-featured) .menu-card-photo img { width: 112%; }
+            .menu-card:not(.is-featured) .menu-card-label { grid-area: label; align-self: end; margin: 0 0 2px; }
+            .menu-card:not(.is-featured) .menu-card-foot { grid-area: foot; align-self: start; }
+            .menu-card:not(.is-featured) .menu-card-name { margin-bottom: 6px; font-size: 0.95rem; }
+            .seasonal { margin-top: 6px; }
+            .menu-note-tax { text-align: left; margin-top: 18px; }
+            .menu-more-btn { margin-top: 22px; }
+
+            /* こだわりの4素材：区切り線をなくして小さめに */
+            .craft-item + .craft-item { border-left: none; }
+            .craft-list { row-gap: 26px; }
+            .craft-img { width: 112px; margin-bottom: 14px; }
+            .concept-detail { padding-bottom: 56px; }
+
+            /* 初めての方へ：線は最小限に */
+            .guide-step { border-top: none; padding: 0 0 22px; }
+            .guide-step-num { font-size: 1.9rem; }
+            .guide-note {
+                border: none;
+                background: rgba(142, 27, 27, 0.06);
+                border-radius: 6px;
+                padding: 14px 16px;
+                margin: 8px 0 36px;
+            }
+            .guide-info { row-gap: 26px; }
+            .guide-card { border-top: none; padding: 0; }
+            .guide-card-link { padding-top: 10px; }
+
+            /* お知らせ：同じ Instagram 埋め込みは下の「各種リンク」に1つだけ */
+            .news-insta { display: none; }
+            .news-list { border-top: none; }
+            .news-item:last-child { border-bottom: none; }
+
+            /* 店舗案内：駐車場の注意は淡い背景で */
+            .parking-notice {
+                border: none;
+                background: rgba(142, 27, 27, 0.06);
+                border-radius: 6px;
+                padding: 14px 16px;
+            }
+            .access-info-list { border-top: none; }
+            .access-info-row:last-child { border-bottom: none; }
+
+            /* 各種リンク */
+            .insta-feature { border-bottom: none; padding-top: 0; }
+            .sns-link { border-top: none; }
+            .sns-link:last-child { border-bottom: none; }
+        }
+
+        /* ============================================================
+           初めての方へ：線をなくして余白と色で区切る（PC・スマホ共通）
+        ============================================================ */
+        #guide .sec-head-center { border-bottom: none; padding-bottom: 0; }
+        .guide-steps::before { display: none; }
+        .guide-step { border-top: none; padding-top: 0; }
+        .guide-note {
+            border: none;
+            background: rgba(142, 27, 27, 0.06);
+            border-radius: 6px;
+            padding: 16px 20px;
+        }
+        .guide-info { margin-top: 8px; }
+        .guide-card {
+            border-top: none;
+            background: rgba(255, 252, 247, 0.7);
+            border-radius: 6px;
+            padding: 22px 22px 18px;
+        }
+        .guide-card-link { padding-top: 14px; }
+        @media (max-width: 699px) {
+            .guide-info { row-gap: 12px; }
+            .guide-card { padding: 18px 18px 14px; }
+        }
+
+        /* ============================================================
+           初めての方へ：手順をカードにして、矢印でつなぐ
+        ============================================================ */
+        .guide-steps { gap: 28px; align-items: stretch; }
+        .guide-step {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 252, 247, 0.85);
+            border-radius: 6px;
+            padding: 22px 20px 20px !important;
+            text-align: left;
+        }
+        .guide-step-num {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 6px;
+            font-size: 0.78rem !important;
+            letter-spacing: 0.2em;
+            line-height: 1;
+            margin: 0 0 14px !important;
+        }
+        .guide-step-num::before { content: 'STEP'; font-family: var(--latin); letter-spacing: 0.2em; }
+        .guide-step-num { font-family: var(--latin); font-weight: 600; }
+        .guide-step-icon { display: flex !important; margin: 0 0 12px; }
+        .guide-step-icon svg { width: 32px; height: 32px; }
+        /* カード同士をつなぐ矢印（PC：横向き） */
+        .guide-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -21px;
+            width: 14px;
+            height: 14px;
+            transform: translateY(-50%);
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%238e1b1b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 2l5 5-5 5'/%3E%3C/svg%3E") center / contain no-repeat;
+        }
+        /* スマホ：縦に並べ、カードの間に下向きの矢印 */
+        @media (max-width: 799px) {
+            .guide-steps { grid-template-columns: 1fr; gap: 26px; }
+            .guide-step {
+                display: grid;
+                grid-template-columns: 40px 1fr;
+                grid-template-areas: "icon num" "icon title" "icon text";
+                column-gap: 14px;
+                padding: 18px 18px 16px !important;
+            }
+            .guide-step-icon { grid-area: icon; display: flex !important; margin: 2px 0 0; align-self: start; }
+            .guide-step-icon svg { width: 30px; height: 30px; }
+            .guide-step-num { grid-area: num; margin: 0 0 8px !important; }
+            .guide-step-title { grid-area: title; }
+            .guide-step-text { grid-area: text; }
+            .guide-step:not(:last-child)::after {
+                top: auto;
+                bottom: -20px;
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%) rotate(90deg);
+            }
+        }
     </style>
 </head>
 <body>
