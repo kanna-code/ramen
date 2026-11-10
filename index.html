@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>らぁ麺 とうひち - Ramen Touhichi | 京都・修学院</title>
     <meta name="description" content="京都・修学院のらぁ麺とうひち。地鶏と水、生揚げ醤油でつくる淡麗鶏清湯のらぁ麺。ミシュランガイド・ビブグルマン掲載。">
@@ -2902,6 +2903,11 @@
                 -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 82%, transparent 100%) !important;
                 mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 82%, transparent 100%) !important;
             }
+        }
+
+        /* スマホでは素材セクションの長い説明文（京都、洛北の地から…）を非表示 */
+        @media (max-width: 899px) {
+            .ingredients-more { display: none !important; }
         }
     </style>
 </head>
