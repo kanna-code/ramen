@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>らぁ麺 とうひち - Ramen Touhichi | 京都・修学院</title>
     <meta name="description" content="京都・修学院のらぁ麺とうひち。地鶏と水、生揚げ醤油でつくる淡麗鶏清湯のらぁ麺。ミシュランガイド・ビブグルマン掲載。">
@@ -2890,6 +2889,20 @@
                 transform: translateX(-50%) rotate(90deg);
             }
         }
+
+        /* スマホ：どんぶりは切り抜かず、背景ごとの写真を使う（上下の端だけなじませる） */
+        @media (max-width: 899px) {
+            .hero .hero-bowl-sp {
+                width: calc(100% + 56px) !important;
+                max-width: none;
+                margin: auto -28px 0 -28px !important;
+                padding-top: 0 !important;
+                align-self: stretch !important;
+                filter: none !important;
+                -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 82%, transparent 100%) !important;
+                mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 82%, transparent 100%) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2992,7 +3005,7 @@
                 <span class="lang-en">A <em>special</em> bowl<br>for every day.</span>
             </h1>
             <p class="hero-brand-en" aria-hidden="true">RAMEN TOUHICHI</p>
-            <img src="hero-bowl-sp.webp" alt="特製 鶏醤油らぁ麺" class="hero-bowl-sp" width="971" height="728">
+            <img src="hero-photo-sp.webp" alt="特製 鶏醤油らぁ麺" class="hero-bowl-sp" width="1000" height="878">
             <p class="hero-sub">
                 <span class="lang-ja">京都・修学院で、<br>澄んだ淡麗スープのらぁ麺を。</span>
                 <span class="lang-en">In Shugakuin, Kyoto —<br>ramen with a light, clear broth.</span>
